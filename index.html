@@ -145,6 +145,7 @@ section{padding:5rem 3rem;}
 .special-card{background:var(--bg3);border:1px solid var(--border);padding:2rem;}
 .scard-top{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem;}
 .scard-icon{background:var(--gold);color:#080608;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.scard-icon svg{width:24px;height:24px;}
 .scard-name{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--cream);font-weight:700;line-height:1.2;margin-bottom:0.2rem;}
 .scard-price{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;}
 .scard-desc{font-size:0.875rem;color:var(--muted);line-height:1.7;}
@@ -208,10 +209,11 @@ footer img{height:72px;width:auto;opacity:0.5;}
   .nav-links a{display:block;width:100%;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);font-size:0.78rem;color:var(--text);}
   .nav-links a.nav-cta{color:var(--gold) !important;border:none;border-bottom:1px solid var(--border);}
   body.nav-open{overflow:hidden;}
-  .hero{padding:0 1.5rem 6rem;min-height:85vh;}
+  .hero{padding:0 1.5rem 3.5rem;min-height:78vh;}
+  .hero-bg{background-position:center 22%;}
   .qfacts{padding:1.25rem 1.5rem;gap:1rem 1.5rem;}
   .qfact{padding:0;border-right:none;min-width:calc(50% - 0.75rem);flex:0 0 calc(50% - 0.75rem);}
-  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,160px);height:auto;}
+  .photo-grid{grid-template-columns:1fr;grid-template-rows:repeat(5,210px);height:auto;}
   .pg-item.span2{grid-row:span 1;}
   .about{grid-template-columns:1fr;}
   .about-img{height:280px;}
@@ -228,13 +230,15 @@ footer img{height:72px;width:auto;opacity:0.5;}
 }
 
 @media(max-width:480px){
-  .hero h1{font-size:clamp(2.5rem,11vw,3.4rem);}
-  .hero-tagline{font-size:0.78rem;letter-spacing:0.04em;}
+  .hero{padding:0 1.25rem 3rem;min-height:72vh;}
+  .hero-eyebrow{margin-bottom:1rem;}
+  .hero h1{font-size:clamp(2.1rem,9.5vw,3rem);line-height:1;margin-bottom:1rem;}
+  .hero-tagline{font-size:0.72rem;letter-spacing:0.03em;margin-bottom:1.75rem;}
   .hero-tagline span{margin:0 0.3rem;}
   .hero-btns{flex-direction:column;align-items:stretch;}
   .hero-btns a{text-align:center;}
   .qfact{flex:0 0 100%;min-width:100%;}
-  .photo-grid{grid-template-columns:1fr;grid-template-rows:repeat(5,220px);}
+  .photo-grid{grid-template-rows:repeat(5,200px);}
   .stats-row{grid-template-columns:1fr 1fr;gap:1rem 0.75rem;}
   section{padding:3rem 1.25rem;}
   .sec-head h2{font-size:clamp(1.7rem,8vw,2.2rem);}
@@ -295,7 +299,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
   <div class="pg-item"><img src="images/Pooltables1.webp" alt="Pool tables" loading="lazy" decoding="async"></div>
   <div class="pg-item"><img src="images/Dart_board.webp" alt="Dartboard" loading="lazy" decoding="async"></div>
   <div class="pg-item"><img src="images/Keno_pulltabs.webp" alt="Keno" loading="lazy" decoding="async"></div>
-  <div class="pg-item"><img src="images/beer_glass.webp" alt="Cold beer" loading="lazy" decoding="async"></div>
+  <div class="pg-item"><img src="images/beer_glass.webp" alt="Beer taps" loading="lazy" decoding="async"></div>
 </div>
 
 <!-- ABOUT -->
@@ -427,32 +431,32 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <button class="day-tab" data-day="sun">Sunday</button>
   </div>
   <div class="specials-panel" id="specials-mon"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍕</div><div><div class="scard-name">Pizza &amp; Pints</div><div class="scard-price">$18</div></div></div><div class="scard-desc">Any large pizza plus a pint of draft beer. Perfect way to start the week.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🎱</div><div><div class="scard-name">Free Pool Night</div><div class="scard-price">All Day</div></div></div><div class="scard-desc">Both pool tables free to play all Monday. Just grab a table and rack 'em up.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5 12 20 20 5"></path><path d="M4 5c2.5-1.4 13.5-1.4 16 0"></path><circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="14" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Pizza &amp; Pints</div><div class="scard-price">$18</div></div></div><div class="scard-desc">Any large pizza plus a pint of draft beer. Perfect way to start the week.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3.2"></circle><line x1="10.5" y1="13.5" x2="20" y2="4"></line></svg></div><div><div class="scard-name">Free Pool Night</div><div class="scard-price">All Day</div></div></div><div class="scard-desc">Both pool tables free to play all Monday. Just grab a table and rack 'em up.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-tue"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍗</div><div><div class="scard-name">Wing Night</div><div class="scard-price">$0.69/wing</div></div></div><div class="scard-desc">Our famous chicken wings at an unbeatable price. Choose from 12 signature sauces.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍺</div><div><div class="scard-name">Domestic Pints</div><div class="scard-price">$5.50</div></div></div><div class="scard-desc">All domestic draft beer on special. Pair perfectly with wings.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5c1 1 1 2.3 0 3.2"></path><path d="M9.5 7.7c3-1 7.5 0 9 3.2s.3 8-3.3 9.4-8.3-.5-9.3-4.2c-.7-2.6.6-6.9 3.6-8.4z"></path></svg></div><div><div class="scard-name">Wing Night</div><div class="scard-price">$0.69/wing</div></div></div><div class="scard-desc">Our famous chicken wings at an unbeatable price. Choose from 12 signature sauces.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Domestic Pints</div><div class="scard-price">$5.50</div></div></div><div class="scard-desc">All domestic draft beer on special. Pair perfectly with wings.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-wed"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🎯</div><div><div class="scard-name">Darts Tournament</div><div class="scard-price">7:00 PM</div></div></div><div class="scard-desc">Weekly dart tournament with prizes. Free to enter, sign-up starts at 6:30 PM.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍔</div><div><div class="scard-name">Burger &amp; Beer</div><div class="scard-price">$16</div></div></div><div class="scard-desc">Any burger from our menu plus a pint of domestic beer. Add premium toppings for $2.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5.4"></circle><circle cx="12" cy="12" r="1.8"></circle></svg></div><div><div class="scard-name">Darts Tournament</div><div class="scard-price">7:00 PM</div></div></div><div class="scard-desc">Weekly dart tournament with prizes. Free to enter, sign-up starts at 6:30 PM.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10a7 5 0 0 1 14 0"></path><line x1="4" y1="10" x2="20" y2="10"></line><line x1="4" y1="14" x2="20" y2="14"></line><path d="M4 17.5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path></svg></div><div><div class="scard-name">Burger &amp; Beer</div><div class="scard-price">$16</div></div></div><div class="scard-desc">Any burger from our menu plus a pint of domestic beer. Add premium toppings for $2.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-thu"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🌮</div><div><div class="scard-name">Taco Night</div><div class="scard-price">$3 each</div></div></div><div class="scard-desc">Chicken, beef, or veggie tacos. Minimum 3 per order. Fresh toppings bar included.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍹</div><div><div class="scard-name">Margarita Madness</div><div class="scard-price">$7</div></div></div><div class="scard-desc">Classic margaritas on special all night. Lime, strawberry, or mango flavors.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13a8.5 8.5 0 0 1 17 0"></path><line x1="3.5" y1="13" x2="20.5" y2="13"></line><line x1="7" y1="13" x2="7.5" y2="16.5"></line><line x1="12" y1="13" x2="12" y2="17.5"></line><line x1="17" y1="13" x2="16.5" y2="16.5"></line></svg></div><div><div class="scard-name">Taco Night</div><div class="scard-price">$3 each</div></div></div><div class="scard-desc">Chicken, beef, or veggie tacos. Minimum 3 per order. Fresh toppings bar included.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-7 8v7"></path><line x1="8.5" y1="19" x2="15.5" y2="19"></line><line x1="7" y1="7" x2="17" y2="7"></line></svg></div><div><div class="scard-name">Margarita Madness</div><div class="scard-price">$7</div></div></div><div class="scard-desc">Classic margaritas on special all night. Lime, strawberry, or mango flavors.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-fri"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍻</div><div><div class="scard-name">Pitcher Specials</div><div class="scard-price">$18</div></div></div><div class="scard-desc">60oz pitchers of select draft beers. Perfect for sharing with the crew.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🥃</div><div><div class="scard-name">Whiskey Flights</div><div class="scard-price">$22</div></div></div><div class="scard-desc">Sample 4 premium whiskeys. Our bartenders will guide you through the tasting.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l-1 3.5V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7.5L5 4z"></path><path d="M14 9h2A2 2 0 0 1 18 11v3a2 2 0 0 1-2 2h-2"></path></svg></div><div><div class="scard-name">Pitcher Specials</div><div class="scard-price">$18</div></div></div><div class="scard-desc">60oz pitchers of select draft beers. Perfect for sharing with the crew.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="13" rx="1"></rect><line x1="7" y1="13" x2="17" y2="13"></line></svg></div><div><div class="scard-name">Whiskey Flights</div><div class="scard-price">$22</div></div></div><div class="scard-desc">Sample 4 premium whiskeys. Our bartenders will guide you through the tasting.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-sat"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🏈</div><div><div class="scard-name">Game Day Buckets</div><div class="scard-price">$24</div></div></div><div class="scard-desc">5 bottles of domestic beer on ice. Available during all televised games.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍟</div><div><div class="scard-name">Loaded Nachos</div><div class="scard-price">$14</div></div></div><div class="scard-desc">Mountain of nachos with all the fixings. Easily feeds 2–3 people.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5 8z"></path><path d="M4 8h16"></path><path d="M8 8V6a4 4 0 0 1 8 0v2"></path></svg></div><div><div class="scard-name">Game Day Buckets</div><div class="scard-price">$24</div></div></div><div class="scard-desc">5 bottles of domestic beer on ice. Available during all televised games.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 12 6 20 20z"></path><line x1="8" y1="20" x2="12" y2="12"></line><line x1="12" y1="20" x2="12" y2="10"></line><line x1="16" y1="20" x2="12" y2="12"></line><circle cx="10" cy="17" r="0.8" fill="currentColor" stroke="none"></circle><circle cx="14" cy="16" r="0.8" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Loaded Nachos</div><div class="scard-price">$14</div></div></div><div class="scard-desc">Mountain of nachos with all the fixings. Easily feeds 2–3 people.</div></div>
   </div></div>
   <div class="specials-panel" id="specials-sun"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🥞</div><div><div class="scard-name">Brunch Menu</div><div class="scard-price">11 AM – 3 PM</div></div></div><div class="scard-desc">Special brunch items including breakfast poutine, eggs benedict, and bottomless coffee.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon">🍺</div><div><div class="scard-name">Caesar Sundays</div><div class="scard-price">$6</div></div></div><div class="scard-desc">Classic Caesars all day. Add bacon or shrimp for $3 extra.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8" rx="7" ry="2"></ellipse><ellipse cx="12" cy="12" rx="7" ry="2"></ellipse><ellipse cx="12" cy="16" rx="7" ry="2"></ellipse><path d="M12 6c1.5 1 3 3.5 3 5"></path></svg></div><div><div class="scard-name">Brunch Menu</div><div class="scard-price">11 AM – 3 PM</div></div></div><div class="scard-desc">Special brunch items including breakfast poutine, eggs benedict, and bottomless coffee.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Caesar Sundays</div><div class="scard-price">$6</div></div></div><div class="scard-desc">Classic Caesars all day. Add bacon or shrimp for $3 extra.</div></div>
   </div></div>
 </section>
 
