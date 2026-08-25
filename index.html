@@ -37,6 +37,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,8,0.92);
 .nav-links a:hover{color:var(--gold-lt);}
 .nav-cta{color:var(--gold) !important;border:1px solid var(--gold);padding:0.4rem 1rem;}
 .nav-cta:hover{background:var(--gold) !important;color:#080608 !important;}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:transparent;border:none;cursor:pointer;padding:0;flex-shrink:0;}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--cream);transition:transform 0.25s ease,opacity 0.2s ease;}
+.nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.active span:nth-child(2){opacity:0;}
+.nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 /* ─── HERO ─── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 3rem 8rem;overflow:hidden;}
@@ -194,12 +199,18 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
-  nav{padding:0 1.5rem;height:68px;}
-  nav img{height:52px;}
-  .nav-links{gap:1.25rem;}
-  .hero{padding:0 1.5rem 6rem;}
-  .qfacts{padding:1.25rem 1.5rem;gap:1.5rem;}
-  .qfact{padding:0;border-right:none;min-width:140px;}
+  nav{padding:0 1.25rem;height:64px;}
+  .nav-logo img{height:46px;}
+  .nav-toggle{display:flex;}
+  .nav-links{position:fixed;top:64px;left:0;right:0;bottom:auto;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.3s ease;z-index:99;}
+  .nav-links.open{max-height:80vh;overflow-y:auto;}
+  .nav-links li{width:100%;}
+  .nav-links a{display:block;width:100%;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);font-size:0.78rem;color:var(--text);}
+  .nav-links a.nav-cta{color:var(--gold) !important;border:none;border-bottom:1px solid var(--border);}
+  body.nav-open{overflow:hidden;}
+  .hero{padding:0 1.5rem 6rem;min-height:85vh;}
+  .qfacts{padding:1.25rem 1.5rem;gap:1rem 1.5rem;}
+  .qfact{padding:0;border-right:none;min-width:calc(50% - 0.75rem);flex:0 0 calc(50% - 0.75rem);}
   .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,160px);height:auto;}
   .pg-item.span2{grid-row:span 1;}
   .about{grid-template-columns:1fr;}
@@ -210,8 +221,29 @@ footer img{height:72px;width:auto;opacity:0.5;}
   .divider{margin:0 1.5rem;}
   .events-grid{grid-template-columns:1fr;}
   .gig-grid{grid-template-columns:1fr;}
-  .loc-grid{grid-template-columns:1fr;}
+  .day-tab,.menu-tab,.month-tab{padding:0.85rem 1.1rem;min-height:44px;}
+  .loc-grid{grid-template-columns:1fr;gap:2.5rem;}
   .map-wrap{height:300px;}
+  .menu-item{gap:1rem;}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2.5rem,11vw,3.4rem);}
+  .hero-tagline{font-size:0.78rem;letter-spacing:0.04em;}
+  .hero-tagline span{margin:0 0.3rem;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .hero-btns a{text-align:center;}
+  .qfact{flex:0 0 100%;min-width:100%;}
+  .photo-grid{grid-template-columns:1fr;grid-template-rows:repeat(5,220px);}
+  .stats-row{grid-template-columns:1fr 1fr;gap:1rem 0.75rem;}
+  section{padding:3rem 1.25rem;}
+  .sec-head h2{font-size:clamp(1.7rem,8vw,2.2rem);}
+  .menu-item{flex-direction:column;gap:0.35rem;}
+  .mi-price{padding-top:0;}
+  .loc-grid{gap:2rem;}
+  .map-wrap{height:230px;}
+  footer{padding:3rem 1.5rem;}
+  .footer-links{gap:1.25rem 1.5rem;justify-content:center;}
 }
 </style>
 </head>
@@ -222,7 +254,10 @@ footer img{height:72px;width:auto;opacity:0.5;}
   <a href="#" class="nav-logo">
     <img src="images/baselines-logo.png" alt="Baselines Pub" fetchpriority="high" decoding="async">
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#events">Events</a></li>
     <li><a href="#live-music">Live Music</a></li>
     <li><a href="#specials">Specials</a></li>
@@ -628,6 +663,26 @@ footer img{height:72px;width:auto;opacity:0.5;}
 </footer>
 
 <script>
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+function closeNav(){
+  navToggle.classList.remove('active');
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+  document.body.classList.remove('nav-open');
+}
+function openNav(){
+  navToggle.classList.add('active');
+  navLinks.classList.add('open');
+  navToggle.setAttribute('aria-expanded','true');
+  document.body.classList.add('nav-open');
+}
+navToggle.addEventListener('click', () => {
+  navLinks.classList.contains('open') ? closeNav() : openNav();
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+window.addEventListener('resize', () => { if(window.innerWidth > 900) closeNav(); });
+
 const today = new Date().getDay();
 const dayMap = ['sun','mon','tue','wed','thu','fri','sat'];
 const todayKey = dayMap[today];
