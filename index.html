@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/wide_bar_shot.webp" fetchpriority="high">
 <style>
 :root {
   --bg:       #080608;
@@ -39,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,8,0.92);
 
 /* ─── HERO ─── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 3rem 8rem;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/wide_bar_shot.jpg');background-size:cover;background-position:center 35%;z-index:0;}
+.hero-bg{position:absolute;inset:0;background-image:url('images/wide_bar_shot.webp');background-size:cover;background-position:center 35%;z-index:0;}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(8,6,8,1) 0%, rgba(8,6,8,0.7) 45%, rgba(8,6,8,0.15) 100%);}
 .hero-content{position:relative;z-index:2;max-width:800px;}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
@@ -219,7 +220,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/file_00000000c1a071fdbf97919f1097b206.png" alt="Baselines Pub">
+    <img src="images/baselines-logo.png" alt="Baselines Pub" fetchpriority="high" decoding="async">
   </a>
   <ul class="nav-links">
     <li><a href="#events">Events</a></li>
@@ -255,17 +256,17 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <!-- PHOTO GRID -->
 <div class="photo-grid">
-  <div class="pg-item span2"><img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/top_seating_area.jpg" alt="Seating area"></div>
-  <div class="pg-item"><img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/Pooltables1.jpg" alt="Pool tables"></div>
-  <div class="pg-item"><img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/Dart_board.jpg" alt="Dartboard"></div>
-  <div class="pg-item"><img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/Keno_pulltabs.jpg" alt="Keno"></div>
-  <div class="pg-item"><img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/beer_glass.jpg" alt="Cold beer"></div>
+  <div class="pg-item span2"><img src="images/top_seating_area.webp" alt="Seating area" loading="lazy" decoding="async"></div>
+  <div class="pg-item"><img src="images/Pooltables1.webp" alt="Pool tables" loading="lazy" decoding="async"></div>
+  <div class="pg-item"><img src="images/Dart_board.webp" alt="Dartboard" loading="lazy" decoding="async"></div>
+  <div class="pg-item"><img src="images/Keno_pulltabs.webp" alt="Keno" loading="lazy" decoding="async"></div>
+  <div class="pg-item"><img src="images/beer_glass.webp" alt="Cold beer" loading="lazy" decoding="async"></div>
 </div>
 
 <!-- ABOUT -->
 <div class="about">
   <div class="about-img">
-    <img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/Guest_bartaps1.jpg" alt="Bar taps">
+    <img src="images/Guest_bartaps1.webp" alt="Bar taps" loading="lazy" decoding="async">
   </div>
   <div class="about-body">
     <div class="section-kicker">The Vibe</div>
@@ -314,9 +315,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="event-card">
       <div class="event-meta">
         <div class="event-date-block"><span class="month">See</span><span class="day">♪</span><span class="dow">Below</span></div>
-        <div><div class="event-cat">Live Music</div><div class="event-title">Live Bands Every Fri &amp; Sat</div></div>
+        <div><div class="event-cat">Live Music</div><div class="event-title">Live Bands Every Friday</div></div>
       </div>
-      <div class="event-desc">We bring in live acts most Friday and Saturday nights. Check the full Live Music Calendar below for who's playing and when.</div>
+      <div class="event-desc">We bring in a live act most Friday nights. Check the full Live Music Calendar below for who's playing and when.</div>
     </div>
   </div>
 </section>
@@ -339,55 +340,38 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
   <div class="gig-panel" id="gigs-aug"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">14</span></div><div class="gig-band">Sound Machine</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">15</span></div><div class="gig-band">Henry Yan</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">21</span></div><div class="gig-band">Coyote Creek</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">22</span></div><div class="gig-band">Dave Leslie</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">28</span></div><div class="gig-band">Hit n Miss</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">29</span></div><div class="gig-band">Zdenko Feigelstock</div></div>
   </div></div>
 
   <div class="gig-panel" id="gigs-sep"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Pop Junkies</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">5</span></div><div class="gig-band">Craig Olson</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Sons of Stanley</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">19</span></div><div class="gig-band">John Higgins</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">25</span></div><div class="gig-band">The Guilty Party</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">26</span></div><div class="gig-band">Colin Sawatsky</div></div>
   </div></div>
 
   <div class="gig-panel" id="gigs-oct"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">2</span></div><div class="gig-band">Mickey Magennis</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">9</span></div><div class="gig-band">Steve Sainas Trio</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">10</span></div><div class="gig-band">Steve Sainas Trio</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">16</span></div><div class="gig-band">Vibrant Shades</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">17</span></div><div class="gig-band">Trent Burbank</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">23</span></div><div class="gig-band">Neil Harnett Trio</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">24</span></div><div class="gig-band">Neil Harnett Trio</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">30</span></div><div class="gig-band">Hit n Miss</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">31</span></div><div class="gig-band">Zdenko Feigelstock</div></div>
   </div></div>
 
   <div class="gig-panel" id="gigs-nov"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">6</span></div><div class="gig-band">Replay</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">7</span></div><div class="gig-band">Doug Coleman</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">THU</span><span class="gig-num">12</span></div><div class="gig-band">Brian Zalo</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">14</span></div><div class="gig-band">Brian Zalo</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">20</span></div><div class="gig-band">Coyote Creek</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">21</span></div><div class="gig-band">Dave Leslie</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">27</span></div><div class="gig-band">Steve Sainas Trio</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">28</span></div><div class="gig-band">Steve Sainas Trio</div></div>
   </div></div>
 
   <div class="gig-panel" id="gigs-dec"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Sons of Stanley</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">5</span></div><div class="gig-band">John Higgins</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">11</span></div><div class="gig-band">The Guilty Party</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">12</span></div><div class="gig-band">Colin Sawatsky</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Iconix</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">SAT</span><span class="gig-num">19</span></div><div class="gig-band">Epplette</div></div>
   </div></div>
 
-  <div class="gig-note">Lineup pulled from the booking calendar — band names/dates are confirmed as of print, but always subject to change. Call ahead to confirm a specific show.</div>
+  <div class="gig-note">Lineup pulled from the booking calendar — live music is Friday nights (plus occasional one-off dates). Band names/dates are confirmed as of print, but always subject to change. Call ahead to confirm a specific show.</div>
 </section>
 
 <div class="divider"></div>
@@ -631,7 +615,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <!-- FOOTER -->
 <footer>
-  <img src="https://raw.githubusercontent.com/StackwellDigital/baselinespub/main/file_00000000c1a071fdbf97919f1097b206.png" alt="Baselines Pub">
+  <img src="images/baselines-logo.png" alt="Baselines Pub" loading="lazy" decoding="async">
   <ul class="footer-links">
     <li><a href="#events">Events</a></li>
     <li><a href="#live-music">Live Music</a></li>
