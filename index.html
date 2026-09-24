@@ -161,12 +161,12 @@ section{padding:5rem 3rem;}
 /* ─── MENU ─── */
 #menu{background:var(--bg);}
 .menu-note{background:var(--bg3);border-left:3px solid var(--gold);padding:1rem 1.5rem;margin-bottom:2.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;}
-.menu-tabs{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:2.5rem;background:var(--border);padding:3px;}
-.menu-tab{background:transparent;border:none;color:var(--muted);padding:0.65rem 1.4rem;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
-.menu-tab:hover{color:var(--cream);}
-.menu-tab.active{background:var(--gold);color:#080608;}
-.menu-section{display:none;}
-.menu-section.active{display:block;}
+.menu-tabs,.drink-tabs{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:2.5rem;background:var(--border);padding:3px;}
+.menu-tab,.drink-tab{background:transparent;border:none;color:var(--muted);padding:0.65rem 1.4rem;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.menu-tab:hover,.drink-tab:hover{color:var(--cream);}
+.menu-tab.active,.drink-tab.active{background:var(--gold);color:#080608;}
+.menu-section,.drink-section{display:none;}
+.menu-section.active,.drink-section.active{display:block;}
 .menu-cat-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold-pale);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
 .menu-cat{margin-bottom:3rem;}
 .menu-items{display:flex;flex-direction:column;gap:1.25rem;}
@@ -223,7 +223,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
   .divider{margin:0 1.5rem;}
   .events-grid{grid-template-columns:1fr;}
   .gig-grid{grid-template-columns:1fr;}
-  .day-tab,.menu-tab,.month-tab{padding:0.85rem 1.1rem;min-height:44px;}
+  .day-tab,.menu-tab,.month-tab,.drink-tab{padding:0.85rem 1.1rem;min-height:44px;}
   .loc-grid{grid-template-columns:1fr;gap:2.5rem;}
   .map-wrap{height:300px;}
   .menu-item{gap:1rem;}
@@ -243,7 +243,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
   section{padding:3rem 1.25rem;}
   .sec-head h2{font-size:clamp(1.7rem,8vw,2.2rem);}
   .menu-item{flex-direction:column;gap:0.35rem;}
-  .mi-price{padding-top:0;}
+  .mi-price{padding-top:0;white-space:normal;}
   .loc-grid{gap:2rem;}
   .map-wrap{height:230px;}
   footer{padding:3rem 1.5rem;}
@@ -462,16 +462,142 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <div class="divider"></div>
 
-<!-- DRINK SPECIALS -->
+<!-- DRINK MENU -->
 <section id="drink-specials">
   <div class="sec-head">
     <div class="section-kicker">Behind The Bar</div>
-    <h2>Drink Specials</h2>
+    <h2>Drink Menu</h2>
   </div>
-  <div class="soon-card">
-    <div class="soon-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14l-1.2 15a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 3z"></path><line x1="4" y1="3" x2="20" y2="3"></line><line x1="12" y1="12" x2="12" y2="19.5"></line></svg></div>
-    <div class="soon-title">Coming Soon</div>
-    <p class="soon-sub">We're pouring together a dedicated drink specials lineup. Check back soon — or ask your server what's on tonight.</p>
+  <div class="drink-tabs">
+    <button class="drink-tab active" data-drink="spirits">Spirits</button>
+    <button class="drink-tab" data-drink="beer">Beer &amp; Coolers</button>
+    <button class="drink-tab" data-drink="wine">Wine</button>
+    <button class="drink-tab" data-drink="nonalc">Non-Alcoholic</button>
+  </div>
+
+  <div class="drink-section active" id="drink-spirits">
+    <div class="menu-cat"><div class="menu-cat-title">Vodka <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Smirnoff</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Stoli</div></div><div class="mi-price">$7.50 / $11.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Ketel One</div></div><div class="mi-price">$8.25 / $12.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Grey Goose</div></div><div class="mi-price">$10.50 / $15.75</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Rum <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Captain Morgan White</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Captain Morgan Dark</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Captain Morgan Spiced</div></div><div class="mi-price">$7.50 / $11.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Appleton Estate</div></div><div class="mi-price">$8.00 / $12.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Kraken Black Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Sailor Jerry Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Whiskey <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Seagram's VO</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Fireball</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Crown Royal</div></div><div class="mi-price">$7.75 / $11.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Crown Royal Apple</div></div><div class="mi-price">$7.75 / $11.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Jameson</div></div><div class="mi-price">$8.25 / $12.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Bearface Bourbon</div></div><div class="mi-price">$8.75 / $13.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Monkey Shoulder</div></div><div class="mi-price">$11.00 / $16.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Redbreast</div></div><div class="mi-price">$11.50 / $17.25</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Gin <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Gordon's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Tanqueray</div></div><div class="mi-price">$7.75 / $11.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Empress 1908 Indigo</div></div><div class="mi-price">$10.75 / $16.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Empress 1908 Cucumber Lemon</div></div><div class="mi-price">$10.75 / $16.25</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Scotch <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Bell's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Bushmills Black</div></div><div class="mi-price">$8.25 / $12.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Johnnie Walker Black</div></div><div class="mi-price">$10.75 / $16.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Glenlivet Founders Reserve</div></div><div class="mi-price">$11.25 / $17.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Glenlivet 12yr</div></div><div class="mi-price">$12.25 / $18.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Talisker</div></div><div class="mi-price">$15.75 / $23.75</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Tequila <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">El Tequileno</div></div><div class="mi-price">$7.75 / $11.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Espolon Blanco</div></div><div class="mi-price">$8.75 / $13.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Casamigos Blanco</div></div><div class="mi-price">$11.50 / $17.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Casamigos Reposado</div></div><div class="mi-price">$12.00 / $18.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Don Julio Blanco</div></div><div class="mi-price">$12.25 / $18.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Don Julio Reposado</div></div><div class="mi-price">$13.50 / $20.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Clase Azul Reposado</div></div><div class="mi-price">$34.00 / $60.00</div></div>
+    </div></div>
+  </div>
+
+  <div class="drink-section" id="drink-beer">
+    <div class="menu-cat"><div class="menu-cat-title">Bottled Beer <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">341mL</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Kokanee</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Budweiser</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Bud Light</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Miller Lite</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Corona</div></div><div class="mi-price">$7.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">MGD</div></div><div class="mi-price">$7.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Sleeman's Honey Brown</div></div><div class="mi-price">$7.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Heineken</div><div class="mi-desc">330mL</div></div><div class="mi-price">$7.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Stella Artois</div></div><div class="mi-price">$7.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Michelob Ultra</div></div><div class="mi-price">$7.50</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Tall Cans <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">473mL</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Coors Original</div></div><div class="mi-price">$7.50</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">On Tap <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">20oz Pint / 60oz Jug</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25 / $21.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.50 / $21.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.50 / $21.75</div></div>
+      <div class="menu-item"><div><div class="mi-name">Granville Island Cypress Honey Lager</div></div><div class="mi-price">$7.75 / $22.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Rickard's Red</div></div><div class="mi-price">$7.75 / $22.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Blue Moon</div></div><div class="mi-price">$8.00 / $23.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Heineken</div></div><div class="mi-price">$8.75 / $25.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Howe Sound Hazy Daze IPA</div></div><div class="mi-price">$8.75 / $25.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Fat Tug IPA</div></div><div class="mi-price">$8.75 / $25.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Phillips Blue Buck</div></div><div class="mi-price">$8.75 / $25.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Strongbow</div><div class="mi-desc">Pint only</div></div><div class="mi-price">$8.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Guinness</div><div class="mi-desc">Pint only</div></div><div class="mi-price">$9.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Rotating Taps</div><div class="mi-desc">Ask your server what's pouring today</div></div><div class="mi-price">—</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Ciders &amp; Coolers <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">355mL</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Growers</div><div class="mi-desc">Peach or Pear</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Hey Y'all</div></div><div class="mi-price">$7.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Nutrl</div><div class="mi-desc">Grape or Grapefruit</div></div><div class="mi-price">$7.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Happy Dad</div><div class="mi-desc">Grape, Fruit Punch, or Raspberry</div></div><div class="mi-price">$7.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">White Claw</div><div class="mi-desc">Lime, Mango, or Black Cherry</div></div><div class="mi-price">$7.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Smirnoff Ice</div><div class="mi-desc">330mL</div></div><div class="mi-price">$7.50</div></div>
+    </div></div>
+  </div>
+
+  <div class="drink-section" id="drink-wine">
+    <div class="menu-cat"><div class="menu-cat-title">Reds <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Jackson Triggs Merlot</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Murray Banks Cab Sauv</div></div><div class="mi-price">$7.00 / $10.00 / $17.50 / $26.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Bin 555 Shiraz</div></div><div class="mi-price">$8.00 / $11.00 / $19.50 / $29.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Woodwork Cab Sauv</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$32.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">1884 Malbec</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Whites <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Jackson Triggs Sauv Blanc</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Hardys Riesling Gewürztraminer</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Yellowtail Chardonnay</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Tempus Two Pinot Grigio</div></div><div class="mi-price">$7.75 / $10.75 / $19.00 / $28.50</div></div>
+      <div class="menu-item"><div><div class="mi-name">Kim Crawford Sauv Blanc</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
+    </div></div>
+    <div class="menu-cat"><div class="menu-cat-title">Sparkling <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">200mL</span></div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Henkell</div></div><div class="mi-price">$10.00</div></div>
+    </div></div>
+    <div class="menu-note">Wine Wednesday: $5.50 house wine (6oz) &middot; $5 off any 750mL bottle.</div>
+  </div>
+
+  <div class="drink-section" id="drink-nonalc">
+    <div class="menu-cat"><div class="menu-cat-title">Non-Alcoholic</div><div class="menu-items">
+      <div class="menu-item"><div><div class="mi-name">Budweiser Zero</div></div><div class="mi-price">$5.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Heineken 0.0</div></div><div class="mi-price">$5.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Corona 0.0</div></div><div class="mi-price">$5.25</div></div>
+      <div class="menu-item"><div><div class="mi-name">Guinness 0</div></div><div class="mi-price">$7.00</div></div>
+      <div class="menu-item"><div><div class="mi-name">Ole</div><div class="mi-desc">Assorted flavours</div></div><div class="mi-price">$5.25</div></div>
+    </div></div>
   </div>
 </section>
 
@@ -729,6 +855,17 @@ monthTabs.forEach(tab => tab.addEventListener('click', () => setMonth(tab.datase
 const jsMonthMap = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 const curMonthKey = jsMonthMap[new Date().getMonth()];
 setMonth(monthOrder.includes(curMonthKey) ? curMonthKey : 'aug');
+
+const drinkTabs = document.querySelectorAll('.drink-tab');
+const drinkSections = document.querySelectorAll('.drink-section');
+drinkTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    drinkTabs.forEach(t => t.classList.remove('active'));
+    drinkSections.forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(`drink-${tab.dataset.drink}`).classList.add('active');
+  });
+});
 </script>
 </body>
 </html>
