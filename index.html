@@ -18,6 +18,49 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/wide_bar_shot.webp" fetchpriority="high">
+<link rel="canonical" href="https://baselinespub.ca/">
+<link rel="icon" href="images/baselines-logo.png">
+<link rel="apple-touch-icon" href="images/baselines-logo.png">
+<meta name="theme-color" content="#080608">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Baselines Pub">
+<meta property="og:title" content="Baselines Pub — South Surrey & White Rock, BC">
+<meta property="og:description" content="Baselines Pub — your neighbourhood pub in South Surrey. Pool tables, dartboards, 16 taps, daily specials, live music, and great food from the Sandcastle Grill kitchen.">
+<meta property="og:image" content="https://baselinespub.ca/images/wide_bar_shot.webp">
+<meta property="og:url" content="https://baselinespub.ca/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Baselines Pub — South Surrey & White Rock, BC">
+<meta name="twitter:description" content="Baselines Pub — your neighbourhood pub in South Surrey. Pool tables, dartboards, 16 taps, daily specials, live music, and great food from the Sandcastle Grill kitchen.">
+<meta name="twitter:image" content="https://baselinespub.ca/images/wide_bar_shot.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  "name": "Baselines Pub",
+  "image": "https://baselinespub.ca/images/wide_bar_shot.webp",
+  "url": "https://baselinespub.ca/",
+  "telephone": "+1-604-535-2685",
+  "email": "info@baselinespub.ca",
+  "priceRange": "$$",
+  "servesCuisine": "Pub Food",
+  "menu": "https://baselinespub.ca/#menu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Suite 300, 1938 152nd Street",
+    "addressLocality": "Surrey",
+    "addressRegion": "BC",
+    "postalCode": "V4A 4N6",
+    "addressCountry": "CA"
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday"],"opens":"11:30","closes":"00:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"11:30","closes":"01:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"11:30","closes":"00:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"11:30","closes":"02:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"11:00","closes":"00:00"}
+  ]
+}
+</script>
 <style>
 :root {
   --bg:       #080608;
@@ -29,7 +72,7 @@
   --gold-pale:#f0d98a;
   --red:      #8b2020;
   --cream:    #ede5d4;
-  --muted:    #7a6e62;
+  --muted:    #8c8072;
   --border:   #262026;
   --border2:  #332d33;
   --text:     #c8bfb2;
@@ -37,6 +80,9 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--gold);color:#080608;padding:0.75rem 1.25rem;font-family:'DM Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;z-index:200;text-decoration:none;}
+.skip-link:focus{left:1rem;top:1rem;}
 
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,6,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:80px;}
@@ -159,13 +205,8 @@ section{padding:5rem 3rem;}
 .scard-price{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;}
 .scard-desc{font-size:0.875rem;color:var(--muted);line-height:1.7;}
 
-/* ─── DRINK SPECIALS ─── */
+/* ─── DRINK MENU ─── */
 #drink-specials{background:var(--bg);}
-.soon-card{border:1px dashed var(--border2);background:var(--bg2);padding:5rem 2rem;text-align:center;}
-.soon-icon{width:44px;height:44px;margin:0 auto 1.5rem;color:var(--gold);}
-.soon-icon svg{width:100%;height:100%;}
-.soon-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--gold-pale);font-weight:700;margin-bottom:0.75rem;}
-.soon-sub{font-size:0.9rem;color:var(--muted);max-width:420px;margin:0 auto;line-height:1.7;}
 
 /* ─── MENU ─── */
 #menu{background:var(--bg);}
@@ -262,6 +303,8 @@ footer img{height:72px;width:auto;opacity:0.5;}
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
@@ -280,6 +323,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
   </ul>
 </nav>
 
+<main id="main">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -296,10 +340,10 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <!-- QUICK FACTS -->
 <div class="qfacts">
-  <div class="qfact"><span class="qfact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3.2"></circle><line x1="10.5" y1="13.5" x2="20" y2="4"></line></svg></span><div><div class="qfact-text">Pool Tables<div class="qfact-sub">2 regulation tables</div></div></div></div>
-  <div class="qfact"><span class="qfact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5.4"></circle><circle cx="12" cy="12" r="1.8"></circle></svg></span><div><div class="qfact-text">Dartboards<div class="qfact-sub">Electronic scoring</div></div></div></div>
-  <div class="qfact"><span class="qfact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></span><div><div class="qfact-text">16 Taps<div class="qfact-sub">Craft &amp; domestic</div></div></div></div>
-  <div class="qfact"><span class="qfact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="1.5"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span><div><div class="qfact-text">Sports on Every Screen<div class="qfact-sub">Never miss a game</div></div></div></div>
+  <div class="qfact"><span class="qfact-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3.2"></circle><line x1="10.5" y1="13.5" x2="20" y2="4"></line></svg></span><div><div class="qfact-text">Pool Tables<div class="qfact-sub">2 regulation tables</div></div></div></div>
+  <div class="qfact"><span class="qfact-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5.4"></circle><circle cx="12" cy="12" r="1.8"></circle></svg></span><div><div class="qfact-text">Dartboards<div class="qfact-sub">Electronic scoring</div></div></div></div>
+  <div class="qfact"><span class="qfact-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></span><div><div class="qfact-text">16 Taps<div class="qfact-sub">Craft &amp; domestic</div></div></div></div>
+  <div class="qfact"><span class="qfact-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="1.5"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span><div><div class="qfact-text">Sports on Every Screen<div class="qfact-sub">Never miss a game</div></div></div></div>
 </div>
 
 <!-- PHOTO GRID -->
@@ -378,27 +422,27 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="section-kicker">Live On Stage</div>
     <h2>Live Music Calendar</h2>
   </div>
-  <div class="month-tabs">
-    <button class="month-tab" data-month="aug">August</button>
-    <button class="month-tab" data-month="sep">September</button>
-    <button class="month-tab" data-month="oct">October</button>
-    <button class="month-tab" data-month="nov">November</button>
-    <button class="month-tab" data-month="dec">December</button>
+  <div class="month-tabs" role="tablist" aria-label="Month">
+    <button class="month-tab" id="tab-month-aug" role="tab" aria-selected="false" aria-controls="gigs-aug" data-month="aug">August</button>
+    <button class="month-tab" id="tab-month-sep" role="tab" aria-selected="false" aria-controls="gigs-sep" data-month="sep">September</button>
+    <button class="month-tab" id="tab-month-oct" role="tab" aria-selected="false" aria-controls="gigs-oct" data-month="oct">October</button>
+    <button class="month-tab" id="tab-month-nov" role="tab" aria-selected="false" aria-controls="gigs-nov" data-month="nov">November</button>
+    <button class="month-tab" id="tab-month-dec" role="tab" aria-selected="false" aria-controls="gigs-dec" data-month="dec">December</button>
   </div>
 
-  <div class="gig-panel" id="gigs-aug"><div class="gig-grid">
+  <div class="gig-panel" id="gigs-aug" role="tabpanel" aria-labelledby="tab-month-aug"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">14</span></div><div class="gig-band">Sound Machine</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">21</span></div><div class="gig-band">Coyote Creek</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">28</span></div><div class="gig-band">Hit n Miss</div></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-sep"><div class="gig-grid">
+  <div class="gig-panel" id="gigs-sep" role="tabpanel" aria-labelledby="tab-month-sep"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Pop Junkies</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Sons of Stanley</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">25</span></div><div class="gig-band">The Guilty Party</div></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-oct"><div class="gig-grid">
+  <div class="gig-panel" id="gigs-oct" role="tabpanel" aria-labelledby="tab-month-oct"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">2</span></div><div class="gig-band">Mickey Magennis</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">9</span></div><div class="gig-band">Steve Sainas Trio</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">16</span></div><div class="gig-band">Vibrant Shades</div></div>
@@ -406,14 +450,14 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">30</span></div><div class="gig-band">Hit n Miss</div></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-nov"><div class="gig-grid">
+  <div class="gig-panel" id="gigs-nov" role="tabpanel" aria-labelledby="tab-month-nov"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">6</span></div><div class="gig-band">Replay</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">THU</span><span class="gig-num">12</span></div><div class="gig-band">Brian Zalo</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">20</span></div><div class="gig-band">Coyote Creek</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">27</span></div><div class="gig-band">Steve Sainas Trio</div></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-dec"><div class="gig-grid">
+  <div class="gig-panel" id="gigs-dec" role="tabpanel" aria-labelledby="tab-month-dec"><div class="gig-grid">
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Sons of Stanley</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">11</span></div><div class="gig-band">The Guilty Party</div></div>
     <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Iconix</div></div>
@@ -430,42 +474,42 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="section-kicker">Daily Deals</div>
     <h2>Weekly Specials</h2>
   </div>
-  <div class="day-tabs">
-    <button class="day-tab" data-day="mon">Monday</button>
-    <button class="day-tab" data-day="tue">Tuesday</button>
-    <button class="day-tab" data-day="wed">Wednesday</button>
-    <button class="day-tab" data-day="thu">Thursday</button>
-    <button class="day-tab" data-day="fri">Friday</button>
-    <button class="day-tab" data-day="sat">Saturday</button>
-    <button class="day-tab" data-day="sun">Sunday</button>
+  <div class="day-tabs" role="tablist" aria-label="Day of the week">
+    <button class="day-tab" id="tab-day-mon" role="tab" aria-selected="false" aria-controls="specials-mon" data-day="mon">Monday</button>
+    <button class="day-tab" id="tab-day-tue" role="tab" aria-selected="false" aria-controls="specials-tue" data-day="tue">Tuesday</button>
+    <button class="day-tab" id="tab-day-wed" role="tab" aria-selected="false" aria-controls="specials-wed" data-day="wed">Wednesday</button>
+    <button class="day-tab" id="tab-day-thu" role="tab" aria-selected="false" aria-controls="specials-thu" data-day="thu">Thursday</button>
+    <button class="day-tab" id="tab-day-fri" role="tab" aria-selected="false" aria-controls="specials-fri" data-day="fri">Friday</button>
+    <button class="day-tab" id="tab-day-sat" role="tab" aria-selected="false" aria-controls="specials-sat" data-day="sat">Saturday</button>
+    <button class="day-tab" id="tab-day-sun" role="tab" aria-selected="false" aria-controls="specials-sun" data-day="sun">Sunday</button>
   </div>
-  <div class="specials-panel" id="specials-mon"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5 12 20 20 5"></path><path d="M4 5c2.5-1.4 13.5-1.4 16 0"></path><circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="14" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Pizza &amp; Pints</div><div class="scard-price">$18</div></div></div><div class="scard-desc">Any large pizza plus a pint of draft beer. Perfect way to start the week.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3.2"></circle><line x1="10.5" y1="13.5" x2="20" y2="4"></line></svg></div><div><div class="scard-name">Free Pool Night</div><div class="scard-price">All Day</div></div></div><div class="scard-desc">Both pool tables free to play all Monday. Just grab a table and rack 'em up.</div></div>
+  <div class="specials-panel" id="specials-mon" role="tabpanel" aria-labelledby="tab-day-mon"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5 12 20 20 5"></path><path d="M4 5c2.5-1.4 13.5-1.4 16 0"></path><circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="14" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Pizza &amp; Pints</div><div class="scard-price">$18</div></div></div><div class="scard-desc">Any large pizza plus a pint of draft beer. Perfect way to start the week.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3.2"></circle><line x1="10.5" y1="13.5" x2="20" y2="4"></line></svg></div><div><div class="scard-name">Free Pool Night</div><div class="scard-price">All Day</div></div></div><div class="scard-desc">Both pool tables free to play all Monday. Just grab a table and rack 'em up.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-tue"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5c1 1 1 2.3 0 3.2"></path><path d="M9.5 7.7c3-1 7.5 0 9 3.2s.3 8-3.3 9.4-8.3-.5-9.3-4.2c-.7-2.6.6-6.9 3.6-8.4z"></path></svg></div><div><div class="scard-name">Wing Night</div><div class="scard-price">$0.69/wing</div></div></div><div class="scard-desc">Our famous chicken wings at an unbeatable price. Choose from 12 signature sauces.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Domestic Pints</div><div class="scard-price">$5.50</div></div></div><div class="scard-desc">All domestic draft beer on special. Pair perfectly with wings.</div></div>
+  <div class="specials-panel" id="specials-tue" role="tabpanel" aria-labelledby="tab-day-tue"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5c1 1 1 2.3 0 3.2"></path><path d="M9.5 7.7c3-1 7.5 0 9 3.2s.3 8-3.3 9.4-8.3-.5-9.3-4.2c-.7-2.6.6-6.9 3.6-8.4z"></path></svg></div><div><div class="scard-name">Wing Night</div><div class="scard-price">$0.69/wing</div></div></div><div class="scard-desc">Our famous chicken wings at an unbeatable price. Choose from 12 signature sauces.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Domestic Pints</div><div class="scard-price">$5.50</div></div></div><div class="scard-desc">All domestic draft beer on special. Pair perfectly with wings.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-wed"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5.4"></circle><circle cx="12" cy="12" r="1.8"></circle></svg></div><div><div class="scard-name">Darts Tournament</div><div class="scard-price">7:00 PM</div></div></div><div class="scard-desc">Weekly dart tournament with prizes. Free to enter, sign-up starts at 6:30 PM.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10a7 5 0 0 1 14 0"></path><line x1="4" y1="10" x2="20" y2="10"></line><line x1="4" y1="14" x2="20" y2="14"></line><path d="M4 17.5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path></svg></div><div><div class="scard-name">Burger &amp; Beer</div><div class="scard-price">$16</div></div></div><div class="scard-desc">Any burger from our menu plus a pint of domestic beer. Add premium toppings for $2.</div></div>
+  <div class="specials-panel" id="specials-wed" role="tabpanel" aria-labelledby="tab-day-wed"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5.4"></circle><circle cx="12" cy="12" r="1.8"></circle></svg></div><div><div class="scard-name">Darts Tournament</div><div class="scard-price">7:00 PM</div></div></div><div class="scard-desc">Weekly dart tournament with prizes. Free to enter, sign-up starts at 6:30 PM.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10a7 5 0 0 1 14 0"></path><line x1="4" y1="10" x2="20" y2="10"></line><line x1="4" y1="14" x2="20" y2="14"></line><path d="M4 17.5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path></svg></div><div><div class="scard-name">Burger &amp; Beer</div><div class="scard-price">$16</div></div></div><div class="scard-desc">Any burger from our menu plus a pint of domestic beer. Add premium toppings for $2.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-thu"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13a8.5 8.5 0 0 1 17 0"></path><line x1="3.5" y1="13" x2="20.5" y2="13"></line><line x1="7" y1="13" x2="7.5" y2="16.5"></line><line x1="12" y1="13" x2="12" y2="17.5"></line><line x1="17" y1="13" x2="16.5" y2="16.5"></line></svg></div><div><div class="scard-name">Taco Night</div><div class="scard-price">$3 each</div></div></div><div class="scard-desc">Chicken, beef, or veggie tacos. Minimum 3 per order. Fresh toppings bar included.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-7 8v7"></path><line x1="8.5" y1="19" x2="15.5" y2="19"></line><line x1="7" y1="7" x2="17" y2="7"></line></svg></div><div><div class="scard-name">Margarita Madness</div><div class="scard-price">$7</div></div></div><div class="scard-desc">Classic margaritas on special all night. Lime, strawberry, or mango flavors.</div></div>
+  <div class="specials-panel" id="specials-thu" role="tabpanel" aria-labelledby="tab-day-thu"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13a8.5 8.5 0 0 1 17 0"></path><line x1="3.5" y1="13" x2="20.5" y2="13"></line><line x1="7" y1="13" x2="7.5" y2="16.5"></line><line x1="12" y1="13" x2="12" y2="17.5"></line><line x1="17" y1="13" x2="16.5" y2="16.5"></line></svg></div><div><div class="scard-name">Taco Night</div><div class="scard-price">$3 each</div></div></div><div class="scard-desc">Chicken, beef, or veggie tacos. Minimum 3 per order. Fresh toppings bar included.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-7 8v7"></path><line x1="8.5" y1="19" x2="15.5" y2="19"></line><line x1="7" y1="7" x2="17" y2="7"></line></svg></div><div><div class="scard-name">Margarita Madness</div><div class="scard-price">$7</div></div></div><div class="scard-desc">Classic margaritas on special all night. Lime, strawberry, or mango flavors.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-fri"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l-1 3.5V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7.5L5 4z"></path><path d="M14 9h2A2 2 0 0 1 18 11v3a2 2 0 0 1-2 2h-2"></path></svg></div><div><div class="scard-name">Pitcher Specials</div><div class="scard-price">$18</div></div></div><div class="scard-desc">60oz pitchers of select draft beers. Perfect for sharing with the crew.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="13" rx="1"></rect><line x1="7" y1="13" x2="17" y2="13"></line></svg></div><div><div class="scard-name">Whiskey Flights</div><div class="scard-price">$22</div></div></div><div class="scard-desc">Sample 4 premium whiskeys. Our bartenders will guide you through the tasting.</div></div>
+  <div class="specials-panel" id="specials-fri" role="tabpanel" aria-labelledby="tab-day-fri"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l-1 3.5V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7.5L5 4z"></path><path d="M14 9h2A2 2 0 0 1 18 11v3a2 2 0 0 1-2 2h-2"></path></svg></div><div><div class="scard-name">Pitcher Specials</div><div class="scard-price">$18</div></div></div><div class="scard-desc">60oz pitchers of select draft beers. Perfect for sharing with the crew.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="13" rx="1"></rect><line x1="7" y1="13" x2="17" y2="13"></line></svg></div><div><div class="scard-name">Whiskey Flights</div><div class="scard-price">$22</div></div></div><div class="scard-desc">Sample 4 premium whiskeys. Our bartenders will guide you through the tasting.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-sat"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5 8z"></path><path d="M4 8h16"></path><path d="M8 8V6a4 4 0 0 1 8 0v2"></path></svg></div><div><div class="scard-name">Game Day Buckets</div><div class="scard-price">$24</div></div></div><div class="scard-desc">5 bottles of domestic beer on ice. Available during all televised games.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 12 6 20 20z"></path><line x1="8" y1="20" x2="12" y2="12"></line><line x1="12" y1="20" x2="12" y2="10"></line><line x1="16" y1="20" x2="12" y2="12"></line><circle cx="10" cy="17" r="0.8" fill="currentColor" stroke="none"></circle><circle cx="14" cy="16" r="0.8" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Loaded Nachos</div><div class="scard-price">$14</div></div></div><div class="scard-desc">Mountain of nachos with all the fixings. Easily feeds 2–3 people.</div></div>
+  <div class="specials-panel" id="specials-sat" role="tabpanel" aria-labelledby="tab-day-sat"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5 8z"></path><path d="M4 8h16"></path><path d="M8 8V6a4 4 0 0 1 8 0v2"></path></svg></div><div><div class="scard-name">Game Day Buckets</div><div class="scard-price">$24</div></div></div><div class="scard-desc">5 bottles of domestic beer on ice. Available during all televised games.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 12 6 20 20z"></path><line x1="8" y1="20" x2="12" y2="12"></line><line x1="12" y1="20" x2="12" y2="10"></line><line x1="16" y1="20" x2="12" y2="12"></line><circle cx="10" cy="17" r="0.8" fill="currentColor" stroke="none"></circle><circle cx="14" cy="16" r="0.8" fill="currentColor" stroke="none"></circle></svg></div><div><div class="scard-name">Loaded Nachos</div><div class="scard-price">$14</div></div></div><div class="scard-desc">Mountain of nachos with all the fixings. Easily feeds 2–3 people.</div></div>
   </div></div>
-  <div class="specials-panel" id="specials-sun"><div class="specials-grid">
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8" rx="7" ry="2"></ellipse><ellipse cx="12" cy="12" rx="7" ry="2"></ellipse><ellipse cx="12" cy="16" rx="7" ry="2"></ellipse><path d="M12 6c1.5 1 3 3.5 3 5"></path></svg></div><div><div class="scard-name">Brunch Menu</div><div class="scard-price">11 AM – 3 PM</div></div></div><div class="scard-desc">Special brunch items including breakfast poutine, eggs benedict, and bottomless coffee.</div></div>
-    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Caesar Sundays</div><div class="scard-price">$6</div></div></div><div class="scard-desc">Classic Caesars all day. Add bacon or shrimp for $3 extra.</div></div>
+  <div class="specials-panel" id="specials-sun" role="tabpanel" aria-labelledby="tab-day-sun"><div class="specials-grid">
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8" rx="7" ry="2"></ellipse><ellipse cx="12" cy="12" rx="7" ry="2"></ellipse><ellipse cx="12" cy="16" rx="7" ry="2"></ellipse><path d="M12 6c1.5 1 3 3.5 3 5"></path></svg></div><div><div class="scard-name">Brunch Menu</div><div class="scard-price">11 AM – 3 PM</div></div></div><div class="scard-desc">Special brunch items including breakfast poutine, eggs benedict, and bottomless coffee.</div></div>
+    <div class="special-card"><div class="scard-top"><div class="scard-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 6 19V7z"></path><path d="M16 9.5h1.5A1.5 1.5 0 0 1 19 11v3a1.5 1.5 0 0 1-1.5 1.5H16"></path><line x1="6" y1="7" x2="16" y2="7"></line></svg></div><div><div class="scard-name">Caesar Sundays</div><div class="scard-price">$6</div></div></div><div class="scard-desc">Classic Caesars all day. Add bacon or shrimp for $3 extra.</div></div>
   </div></div>
 </section>
 
@@ -477,21 +521,21 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="section-kicker">Behind The Bar</div>
     <h2>Drink Menu</h2>
   </div>
-  <div class="drink-tabs">
-    <button class="drink-tab active" data-drink="spirits">Spirits</button>
-    <button class="drink-tab" data-drink="beer">Beer &amp; Coolers</button>
-    <button class="drink-tab" data-drink="wine">Wine</button>
-    <button class="drink-tab" data-drink="nonalc">Non-Alcoholic</button>
+  <div class="drink-tabs" role="tablist" aria-label="Drink category">
+    <button class="drink-tab active" id="tab-drink-spirits" role="tab" aria-selected="true" aria-controls="drink-spirits" data-drink="spirits">Spirits</button>
+    <button class="drink-tab" id="tab-drink-beer" role="tab" aria-selected="false" aria-controls="drink-beer" data-drink="beer">Beer &amp; Coolers</button>
+    <button class="drink-tab" id="tab-drink-wine" role="tab" aria-selected="false" aria-controls="drink-wine" data-drink="wine">Wine</button>
+    <button class="drink-tab" id="tab-drink-nonalc" role="tab" aria-selected="false" aria-controls="drink-nonalc" data-drink="nonalc">Non-Alcoholic</button>
   </div>
 
-  <div class="drink-section active" id="drink-spirits">
-    <div class="menu-cat"><div class="menu-cat-title">Vodka <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+  <div class="drink-section active" id="drink-spirits" role="tabpanel" aria-labelledby="tab-drink-spirits">
+    <div class="menu-cat"><h3 class="menu-cat-title">Vodka <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Smirnoff</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Stoli</div></div><div class="mi-price">$7.50 / $11.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Ketel One</div></div><div class="mi-price">$8.25 / $12.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Grey Goose</div></div><div class="mi-price">$10.50 / $15.75</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Rum <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Rum <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Captain Morgan White</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Captain Morgan Dark</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Captain Morgan Spiced</div></div><div class="mi-price">$7.50 / $11.25</div></div>
@@ -499,7 +543,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="menu-item"><div><div class="mi-name">Kraken Black Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Sailor Jerry Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Whiskey <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Whiskey <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Seagram's VO</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Fireball</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Crown Royal</div></div><div class="mi-price">$7.75 / $11.75</div></div>
@@ -509,13 +553,13 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="menu-item"><div><div class="mi-name">Monkey Shoulder</div></div><div class="mi-price">$11.00 / $16.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Redbreast</div></div><div class="mi-price">$11.50 / $17.25</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Gin <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Gin <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Gordon's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Tanqueray</div></div><div class="mi-price">$7.75 / $11.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Empress 1908 Indigo</div></div><div class="mi-price">$10.75 / $16.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Empress 1908 Cucumber Lemon</div></div><div class="mi-price">$10.75 / $16.25</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Scotch <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Scotch <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Bell's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Bushmills Black</div></div><div class="mi-price">$8.25 / $12.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Johnnie Walker Black</div></div><div class="mi-price">$10.75 / $16.25</div></div>
@@ -523,7 +567,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="menu-item"><div><div class="mi-name">Glenlivet 12yr</div></div><div class="mi-price">$12.25 / $18.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Talisker</div></div><div class="mi-price">$15.75 / $23.75</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Tequila <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Tequila <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">El Tequileno</div></div><div class="mi-price">$7.75 / $11.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Espolon Blanco</div></div><div class="mi-price">$8.75 / $13.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Casamigos Blanco</div></div><div class="mi-price">$11.50 / $17.25</div></div>
@@ -534,8 +578,8 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="drink-section" id="drink-beer">
-    <div class="menu-cat"><div class="menu-cat-title">Bottled Beer <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">341mL</span></div><div class="menu-items">
+  <div class="drink-section" id="drink-beer" role="tabpanel" aria-labelledby="tab-drink-beer">
+    <div class="menu-cat"><h3 class="menu-cat-title">Bottled Beer <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">341mL</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Kokanee</div></div><div class="mi-price">$7.00</div></div>
@@ -549,11 +593,11 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="menu-item"><div><div class="mi-name">Stella Artois</div></div><div class="mi-price">$7.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Michelob Ultra</div></div><div class="mi-price">$7.50</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Tall Cans <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">473mL</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Tall Cans <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">473mL</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Coors Original</div></div><div class="mi-price">$7.50</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">On Tap <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">20oz Pint / 60oz Jug</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">On Tap <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">20oz Pint / 60oz Jug</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25 / $21.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.50 / $21.75</div></div>
       <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.50 / $21.75</div></div>
@@ -568,7 +612,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="menu-item"><div><div class="mi-name">Guinness</div><div class="mi-desc">Pint only</div></div><div class="mi-price">$9.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Rotating Taps</div><div class="mi-desc">Ask your server what's pouring today</div></div><div class="mi-price">—</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Ciders &amp; Coolers <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">355mL</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Ciders &amp; Coolers <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">355mL</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Growers</div><div class="mi-desc">Peach or Pear</div></div><div class="mi-price">$7.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Hey Y'all</div></div><div class="mi-price">$7.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Nutrl</div><div class="mi-desc">Grape or Grapefruit</div></div><div class="mi-price">$7.25</div></div>
@@ -578,29 +622,29 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="drink-section" id="drink-wine">
-    <div class="menu-cat"><div class="menu-cat-title">Reds <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></div><div class="menu-items">
+  <div class="drink-section" id="drink-wine" role="tabpanel" aria-labelledby="tab-drink-wine">
+    <div class="menu-cat"><h3 class="menu-cat-title">Reds <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Jackson Triggs Merlot</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Murray Banks Cab Sauv</div></div><div class="mi-price">$7.00 / $10.00 / $17.50 / $26.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Bin 555 Shiraz</div></div><div class="mi-price">$8.00 / $11.00 / $19.50 / $29.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Woodwork Cab Sauv</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$32.00</div></div>
       <div class="menu-item"><div><div class="mi-name">1884 Malbec</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Whites <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Whites <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Jackson Triggs Sauv Blanc</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Hardys Riesling Gewürztraminer</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Yellowtail Chardonnay</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
       <div class="menu-item"><div><div class="mi-name">Tempus Two Pinot Grigio</div></div><div class="mi-price">$7.75 / $10.75 / $19.00 / $28.50</div></div>
       <div class="menu-item"><div><div class="mi-name">Kim Crawford Sauv Blanc</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Sparkling <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">200mL</span></div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Sparkling <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">200mL</span></h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Henkell</div></div><div class="mi-price">$10.00</div></div>
     </div></div>
     <div class="menu-note">Wine Wednesday: $5.50 house wine (6oz) &middot; $5 off any 750mL bottle.</div>
   </div>
 
-  <div class="drink-section" id="drink-nonalc">
-    <div class="menu-cat"><div class="menu-cat-title">Non-Alcoholic</div><div class="menu-items">
+  <div class="drink-section" id="drink-nonalc" role="tabpanel" aria-labelledby="tab-drink-nonalc">
+    <div class="menu-cat"><h3 class="menu-cat-title">Non-Alcoholic</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Budweiser Zero</div></div><div class="mi-price">$5.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Heineken 0.0</div></div><div class="mi-price">$5.25</div></div>
       <div class="menu-item"><div><div class="mi-name">Corona 0.0</div></div><div class="mi-price">$5.25</div></div>
@@ -618,20 +662,20 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <div class="section-kicker">Food &amp; Drink</div>
     <h2>Full Menu</h2>
   </div>
-  <div class="menu-tabs">
-    <button class="menu-tab active" data-menu="apps">Starters</button>
-    <button class="menu-tab" data-menu="burgers">Burgers & Dogs</button>
-    <button class="menu-tab" data-menu="mains">Handhelds</button>
-    <button class="menu-tab" data-menu="poutine">Poutine</button>
-    <button class="menu-tab" data-menu="pizza">Pizza</button>
-    <button class="menu-tab" data-menu="sides">Sides</button>
-    <button class="menu-tab" data-menu="greens">Greens & Bowls</button>
-    <button class="menu-tab" data-menu="kids">Kids</button>
+  <div class="menu-tabs" role="tablist" aria-label="Menu category">
+    <button class="menu-tab active" id="tab-menu-apps" role="tab" aria-selected="true" aria-controls="menu-apps" data-menu="apps">Starters</button>
+    <button class="menu-tab" id="tab-menu-burgers" role="tab" aria-selected="false" aria-controls="menu-burgers" data-menu="burgers">Burgers & Dogs</button>
+    <button class="menu-tab" id="tab-menu-mains" role="tab" aria-selected="false" aria-controls="menu-mains" data-menu="mains">Handhelds</button>
+    <button class="menu-tab" id="tab-menu-poutine" role="tab" aria-selected="false" aria-controls="menu-poutine" data-menu="poutine">Poutine</button>
+    <button class="menu-tab" id="tab-menu-pizza" role="tab" aria-selected="false" aria-controls="menu-pizza" data-menu="pizza">Pizza</button>
+    <button class="menu-tab" id="tab-menu-sides" role="tab" aria-selected="false" aria-controls="menu-sides" data-menu="sides">Sides</button>
+    <button class="menu-tab" id="tab-menu-greens" role="tab" aria-selected="false" aria-controls="menu-greens" data-menu="greens">Greens & Bowls</button>
+    <button class="menu-tab" id="tab-menu-kids" role="tab" aria-selected="false" aria-controls="menu-kids" data-menu="kids">Kids</button>
   </div>
 
-  <div class="menu-section active" id="menu-apps">
+  <div class="menu-section active" id="menu-apps" role="tabpanel" aria-labelledby="tab-menu-apps">
     <div class="menu-note">All menu items are prepared in the Sandcastle Grill kitchen and served to your table by our attentive pub staff.</div>
-    <div class="menu-cat"><div class="menu-cat-title">Shareables & Starters</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Shareables & Starters</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Chicken Wings</div><div class="mi-desc">10 pieces lightly breaded and fried to perfection! Choose your sauce: Franks Red Hot, Honey Garlic, Barbeque, Sweet Thai Chili, Salt & Pepper, Teriyaki, Sriracha, or Dry Cajun</div></div><div class="mi-price">$18</div></div>
       <div class="menu-item"><div><div class="mi-name">Nachos</div><div class="mi-desc">Served with our sour cream and salsa. Add guacamole $4 · Add chicken $7 · Add beef/pulled pork $6 · Double cheese $6</div></div><div class="mi-price">$24</div></div>
       <div class="menu-item"><div><div class="mi-name">Half Order Nachos</div></div><div class="mi-price">$15</div></div>
@@ -651,9 +695,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-burgers">
+  <div class="menu-section" id="menu-burgers" role="tabpanel" aria-labelledby="tab-menu-burgers">
     <div class="menu-note">All burgers and hot dogs come with your choice of side! Smash patties are made with 3oz fresh ground beef smashed flat into burger shape — simple, like it should be.</div>
-    <div class="menu-cat"><div class="menu-cat-title">Burgers & Dogs</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Burgers & Dogs</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Canadian Hot Dog</div><div class="mi-desc">Bacon, sautéed onions, cheese</div></div><div class="mi-price">$12</div></div>
       <div class="menu-item"><div><div class="mi-name">Ballpark Hot Dog</div><div class="mi-desc">Ketchup, mustard, relish, raw onions</div></div><div class="mi-price">$12</div></div>
       <div class="menu-item"><div><div class="mi-name">The O.G. SMASHBurger</div><div class="mi-desc">The original prototype — 2 smash patties with cheese, mustard, onion, pickle & mayo</div></div><div class="mi-price">$18</div></div>
@@ -663,9 +707,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-mains">
+  <div class="menu-section" id="menu-mains" role="tabpanel" aria-labelledby="tab-menu-mains">
     <div class="menu-note">Most handhelds come with your choice of a side!</div>
-    <div class="menu-cat"><div class="menu-cat-title">Handhelds</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Handhelds</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Chicken Tenders</div><div class="mi-desc">Served with your choice of side and dipping sauce</div></div><div class="mi-price">$17</div></div>
       <div class="menu-item"><div><div class="mi-name">Hummus Garden Wrap</div><div class="mi-desc">A soft tortilla filled with creamy hummus, crisp lettuce, fresh cucumbers, carrots and tomatoes. Add crispy chicken $5</div></div><div class="mi-price">$13</div></div>
       <div class="menu-item"><div><div class="mi-name">Buffalo Chicken Wrap</div><div class="mi-desc">Chicken tenders tossed in hot sauce with lettuce, tomato, green onion, cheese & ranch</div></div><div class="mi-price">$16</div></div>
@@ -681,9 +725,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-poutine">
+  <div class="menu-section" id="menu-poutine" role="tabpanel" aria-labelledby="tab-menu-poutine">
     <div class="menu-note">All poutines can be made with your choice of tater tots or french fries!</div>
-    <div class="menu-cat"><div class="menu-cat-title">Poutine Project</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Poutine Project</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">The Routine Poutine</div><div class="mi-desc">Fries, gravy & cheese curds</div></div><div class="mi-price">$13</div></div>
       <div class="menu-item"><div><div class="mi-name">The Hot Totty Poutine</div><div class="mi-desc">Tater tots, gravy & cheese curds</div></div><div class="mi-price">$13</div></div>
       <div class="menu-item"><div><div class="mi-name">The Baked Potato Poutine</div><div class="mi-desc">Green onion, bacon bits & sour cream, gravy & cheese curds</div></div><div class="mi-price">$16</div></div>
@@ -693,9 +737,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-pizza">
+  <div class="menu-section" id="menu-pizza" role="tabpanel" aria-labelledby="tab-menu-pizza">
     <div class="menu-note">Classic (C) Pizzas — Small 10" $20 · Large 14" $28. Signature (S) Pizzas — Small 10" $24 · Large 14" $32.</div>
-    <div class="menu-cat"><div class="menu-cat-title">Pizzas</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Pizzas</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Pepperoni <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Pepperoni & mozzarella</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
       <div class="menu-item"><div><div class="mi-name">Three Cheese <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Mozzarella, yellow & white cheddar</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
       <div class="menu-item"><div><div class="mi-name">Hawaiian <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Black forest ham & pineapple</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
@@ -707,15 +751,15 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-sides">
+  <div class="menu-section" id="menu-sides" role="tabpanel" aria-labelledby="tab-menu-sides">
     <div class="menu-note">Handhelds and burgers come with your choice of an included side — swap up to a premium side for the price shown.</div>
-    <div class="menu-cat"><div class="menu-cat-title">Included Sides</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Included Sides</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Fries</div></div><div class="mi-price">Included</div></div>
       <div class="menu-item"><div><div class="mi-name">Garden Salad</div></div><div class="mi-price">Included</div></div>
       <div class="menu-item"><div><div class="mi-name">Caesar Salad</div></div><div class="mi-price">Included</div></div>
       <div class="menu-item"><div><div class="mi-name">Tater Tots</div></div><div class="mi-price">Included</div></div>
     </div></div>
-    <div class="menu-cat"><div class="menu-cat-title">Premium Side Upgrades</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Premium Side Upgrades</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Yam Fries</div></div><div class="mi-price">+$3</div></div>
       <div class="menu-item"><div><div class="mi-name">Onion Rings</div></div><div class="mi-price">+$3</div></div>
       <div class="menu-item"><div><div class="mi-name">Veggies & Dip</div></div><div class="mi-price">+$3</div></div>
@@ -724,8 +768,8 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-greens">
-    <div class="menu-cat"><div class="menu-cat-title">Greens & Bowls</div><div class="menu-items">
+  <div class="menu-section" id="menu-greens" role="tabpanel" aria-labelledby="tab-menu-greens">
+    <div class="menu-cat"><h3 class="menu-cat-title">Greens & Bowls</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Loaded Salad</div><div class="mi-desc">Fully loaded salad with iceberg lettuce, cabbage, cheese, cucumbers, green onions & grape tomatoes. Served with your choice of salad dressing and a side of garlic bread.</div></div><div class="mi-price">$14</div></div>
       <div class="menu-item"><div><div class="mi-name">Caesar Salad</div><div class="mi-desc">Romaine lettuce with Caesar dressing, parmesan cheese, croutons & a side of garlic bread. Add chicken $7</div></div><div class="mi-price">$15</div></div>
       <div class="menu-item"><div><div class="mi-name">Half Size Loaded Salad</div><div class="mi-desc">No bread</div></div><div class="mi-price">$11</div></div>
@@ -734,9 +778,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div></div>
   </div>
 
-  <div class="menu-section" id="menu-kids">
+  <div class="menu-section" id="menu-kids" role="tabpanel" aria-labelledby="tab-menu-kids">
     <div class="menu-note">All kids meals come with a small fountain drink and a side of Oreo cookies.</div>
-    <div class="menu-cat"><div class="menu-cat-title">Kids Menu</div><div class="menu-items">
+    <div class="menu-cat"><h3 class="menu-cat-title">Kids Menu</h3><div class="menu-items">
       <div class="menu-item"><div><div class="mi-name">Chicken Tenders & Fries</div><div class="mi-desc">Kids portion of chicken tenders served with fries and your choice of dipping sauce!</div></div><div class="mi-price">$8</div></div>
       <div class="menu-item"><div><div class="mi-name">Mini Cheeseburgers & Fries</div><div class="mi-desc">2 miniature cheeseburgers with ketchup. Served with a side of fries!</div></div><div class="mi-price">$8</div></div>
       <div class="menu-item"><div><div class="mi-name">Chicken Quesadilla & Fries</div><div class="mi-desc">Half sized quesadilla with chicken and cheese in a flour tortilla served with a side of fries!</div></div><div class="mi-price">$10</div></div>
@@ -776,7 +820,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
       <div class="loc-block">
         <div class="loc-label">Contact</div>
         <div class="loc-text">
-          <a href="tel:+16045352685">📞 (604) 535-2685</a><br>
+          <a href="tel:+16045352685"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:0.4rem;"><path d="M6.5 4h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 6a2 2 0 0 1 2-2z"></path></svg>(604) 535-2685</a><br>
           <a href="mailto:info@baselinespub.ca">info@baselinespub.ca</a>
         </div>
       </div>
@@ -786,6 +830,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -798,7 +843,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <li><a href="#menu">Menu</a></li>
     <li><a href="#location">Location</a></li>
   </ul>
-  <div class="footer-copy">© 2025 Baselines Pub · South Surrey, BC</div>
+  <div class="footer-copy">© <span id="copyYear">2026</span> Baselines Pub · South Surrey, BC</div>
 </footer>
 
 <script>
@@ -821,6 +866,7 @@ navToggle.addEventListener('click', () => {
 });
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 window.addEventListener('resize', () => { if(window.innerWidth > 900) closeNav(); });
+document.getElementById('copyYear').textContent = new Date().getFullYear();
 
 const today = new Date().getDay();
 const dayMap = ['sun','mon','tue','wed','thu','fri','sat'];
@@ -828,11 +874,11 @@ const todayKey = dayMap[today];
 const dayTabs = document.querySelectorAll('.day-tab');
 const specialsPanels = document.querySelectorAll('.specials-panel');
 function setDay(day) {
-  dayTabs.forEach(t => t.classList.remove('active'));
+  dayTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   specialsPanels.forEach(p => p.classList.remove('active'));
   const tab = document.querySelector(`[data-day="${day}"]`);
   const panel = document.getElementById(`specials-${day}`);
-  if(tab) tab.classList.add('active');
+  if(tab){ tab.classList.add('active'); tab.setAttribute('aria-selected','true'); }
   if(panel) panel.classList.add('active');
 }
 dayTabs.forEach(tab => tab.addEventListener('click', () => setDay(tab.dataset.day)));
@@ -842,9 +888,10 @@ const menuTabs = document.querySelectorAll('.menu-tab');
 const menuSections = document.querySelectorAll('.menu-section');
 menuTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    menuTabs.forEach(t => t.classList.remove('active'));
+    menuTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
     menuSections.forEach(s => s.classList.remove('active'));
     tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
     document.getElementById(`menu-${tab.dataset.menu}`).classList.add('active');
   });
 });
@@ -853,11 +900,11 @@ const monthTabs = document.querySelectorAll('.month-tab');
 const gigPanels = document.querySelectorAll('.gig-panel');
 const monthOrder = ['aug','sep','oct','nov','dec'];
 function setMonth(month) {
-  monthTabs.forEach(t => t.classList.remove('active'));
+  monthTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   gigPanels.forEach(p => p.classList.remove('active'));
   const tab = document.querySelector(`.month-tab[data-month="${month}"]`);
   const panel = document.getElementById(`gigs-${month}`);
-  if(tab) tab.classList.add('active');
+  if(tab){ tab.classList.add('active'); tab.setAttribute('aria-selected','true'); }
   if(panel) panel.classList.add('active');
 }
 monthTabs.forEach(tab => tab.addEventListener('click', () => setMonth(tab.dataset.month)));
@@ -869,9 +916,10 @@ const drinkTabs = document.querySelectorAll('.drink-tab');
 const drinkSections = document.querySelectorAll('.drink-section');
 drinkTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    drinkTabs.forEach(t => t.classList.remove('active'));
+    drinkTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
     drinkSections.forEach(s => s.classList.remove('active'));
     tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
     document.getElementById(`drink-${tab.dataset.drink}`).classList.add('active');
   });
 });
