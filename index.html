@@ -43,7 +43,7 @@
   "email": "info@baselinespub.ca",
   "priceRange": "$$",
   "servesCuisine": "Pub Food",
-  "menu": "https://baselinespub.ca/#menu",
+  "menu": "https://baselinespub.ca/menu.html",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Suite 300, 1938 152nd Street",
@@ -61,6 +61,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="css/site.css">
 <style>
 :root {
   --bg:       #080608;
@@ -178,14 +179,14 @@ section{padding:5rem 3rem;}
 .month-tab.active{background:var(--gold);color:#080608;}
 .gig-panel{display:none;}
 .gig-panel.active{display:block;}
-.gig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5px;background:var(--border);}
-.gig-card{background:var(--bg3);padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;transition:background 0.2s;}
-.gig-card:hover{background:var(--surface);}
-.gig-date-block{background:var(--gold);color:#080608;text-align:center;min-width:50px;padding:0.3rem 0.4rem;flex-shrink:0;}
-.gig-date-block .gig-dow{display:block;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;}
-.gig-date-block .gig-num{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;line-height:1;}
-.gig-band{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);font-weight:700;line-height:1.25;}
-.gig-tbd{color:var(--muted);font-style:italic;font-size:0.85rem;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;background:var(--border);}
+.cal-dow{background:var(--bg3);color:var(--gold);text-align:center;padding:0.6rem 0.25rem;font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;}
+.cal-cell{background:var(--bg3);min-height:92px;padding:0.5rem 0.6rem;position:relative;}
+.cal-cell.cal-empty{background:var(--bg2);}
+.cal-date{display:block;font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);}
+.cal-cell.cal-gig{background:var(--surface);box-shadow:inset 0 0 0 1px var(--gold);}
+.cal-cell.cal-gig .cal-date{color:var(--gold);font-weight:600;}
+.cal-gig-band{display:block;margin-top:0.5rem;font-family:'Playfair Display',serif;font-size:0.82rem;line-height:1.25;color:var(--cream);font-weight:700;}
 .gig-note{font-size:0.78rem;color:var(--muted);margin-top:1.5rem;font-style:italic;}
 
 /* ─── SPECIALS ─── */
@@ -204,27 +205,6 @@ section{padding:5rem 3rem;}
 .scard-name{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--cream);font-weight:700;line-height:1.2;margin-bottom:0.2rem;}
 .scard-price{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;}
 .scard-desc{font-size:0.875rem;color:var(--muted);line-height:1.7;}
-
-/* ─── DRINK MENU ─── */
-#drink-specials{background:var(--bg);}
-
-/* ─── MENU ─── */
-#menu{background:var(--bg);}
-.menu-note{background:var(--bg3);border-left:3px solid var(--gold);padding:1rem 1.5rem;margin-bottom:2.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;}
-.menu-tabs,.drink-tabs{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:2.5rem;background:var(--border);padding:3px;}
-.menu-tab,.drink-tab{background:transparent;border:none;color:var(--muted);padding:0.65rem 1.4rem;font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
-.menu-tab:hover,.drink-tab:hover{color:var(--cream);}
-.menu-tab.active,.drink-tab.active{background:var(--gold);color:#080608;}
-.menu-section,.drink-section{display:none;}
-.menu-section.active,.drink-section.active{display:block;}
-.menu-cat-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold-pale);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
-.menu-cat{margin-bottom:3rem;}
-.menu-items{display:flex;flex-direction:column;gap:1.25rem;}
-.menu-item{display:flex;justify-content:space-between;gap:1.5rem;align-items:flex-start;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
-.menu-item:last-child{border-bottom:none;padding-bottom:0;}
-.mi-name{font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;color:var(--cream);margin-bottom:0.25rem;}
-.mi-desc{font-size:0.82rem;color:var(--muted);line-height:1.55;}
-.mi-price{font-family:'DM Mono',monospace;font-size:0.9rem;font-weight:500;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:0.15rem;}
 
 /* ─── LOCATION ─── */
 #location{background:var(--bg2);}
@@ -273,10 +253,13 @@ footer img{height:72px;width:auto;opacity:0.5;}
   .divider{margin:0 1.5rem;}
   .events-grid{grid-template-columns:1fr;}
   .gig-grid{grid-template-columns:1fr;}
-  .day-tab,.menu-tab,.month-tab,.drink-tab{padding:0.85rem 1.1rem;min-height:44px;}
+  .day-tab,.month-tab{padding:0.85rem 1.1rem;min-height:44px;}
+  .month-tab{flex:0 0 auto;padding:0.7rem 0.6rem;font-size:0.6rem;}
+  .cal-dow{font-size:0.55rem;padding:0.4rem 0.1rem;}
+  .cal-cell{min-height:56px;padding:0.3rem 0.3rem;}
+  .cal-gig-band{font-size:0.62rem;margin-top:0.25rem;}
   .loc-grid{grid-template-columns:1fr;gap:2.5rem;}
   .map-wrap{height:300px;}
-  .menu-item{gap:1rem;}
 }
 
 @media(max-width:480px){
@@ -292,8 +275,6 @@ footer img{height:72px;width:auto;opacity:0.5;}
   .stats-row{grid-template-columns:1fr 1fr;gap:1rem 0.75rem;}
   section{padding:3rem 1.25rem;}
   .sec-head h2{font-size:clamp(1.7rem,8vw,2.2rem);}
-  .menu-item{flex-direction:column;gap:0.35rem;}
-  .mi-price{padding-top:0;white-space:normal;}
   .loc-grid{gap:2rem;}
   .map-wrap{height:230px;}
   footer{padding:3rem 1.5rem;}
@@ -307,7 +288,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="images/baselines-logo.png" alt="Baselines Pub" fetchpriority="high" decoding="async">
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -317,8 +298,8 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <li><a href="#events">Events</a></li>
     <li><a href="#live-music">Live Music</a></li>
     <li><a href="#specials">Specials</a></li>
-    <li><a href="#drink-specials">Drinks</a></li>
-    <li><a href="#menu">Menu</a></li>
+    <li><a href="drinks.html">Drinks</a></li>
+    <li><a href="menu.html">Menu</a></li>
     <li><a href="#location" class="nav-cta">Visit Us</a></li>
   </ul>
 </nav>
@@ -332,7 +313,7 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <h1>Your <em>Baseline</em><br>For a Great Night</h1>
     <div class="hero-tagline">Pool <span>·</span> Darts <span>·</span> Keno <span>·</span> Cold Beer <span>·</span> Good Eats</div>
     <div class="hero-btns">
-      <a href="#menu" class="btn-gold">View Menu</a>
+      <a href="menu.html" class="btn-gold">View Menu</a>
       <a href="#location" class="btn-ghost">Get Directions</a>
     </div>
   </div>
@@ -430,37 +411,236 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <button class="month-tab" id="tab-month-dec" role="tab" aria-selected="false" aria-controls="gigs-dec" data-month="dec">December</button>
   </div>
 
-  <div class="gig-panel" id="gigs-aug" role="tabpanel" aria-labelledby="tab-month-aug"><div class="gig-grid">
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">14</span></div><div class="gig-band">Sound Machine</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">21</span></div><div class="gig-band">Coyote Creek</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">28</span></div><div class="gig-band">Hit n Miss</div></div>
+  <div class="gig-panel" id="gigs-aug" role="tabpanel" aria-labelledby="tab-month-aug"><div class="cal-grid">
+    <div class="cal-dow">Su</div>
+    <div class="cal-dow">Mo</div>
+    <div class="cal-dow">Tu</div>
+    <div class="cal-dow">We</div>
+    <div class="cal-dow">Th</div>
+    <div class="cal-dow">Fr</div>
+    <div class="cal-dow">Sa</div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell"><span class="cal-date">1</span></div>
+    <div class="cal-cell"><span class="cal-date">2</span></div>
+    <div class="cal-cell"><span class="cal-date">3</span></div>
+    <div class="cal-cell"><span class="cal-date">4</span></div>
+    <div class="cal-cell"><span class="cal-date">5</span></div>
+    <div class="cal-cell"><span class="cal-date">6</span></div>
+    <div class="cal-cell"><span class="cal-date">7</span></div>
+    <div class="cal-cell"><span class="cal-date">8</span></div>
+    <div class="cal-cell"><span class="cal-date">9</span></div>
+    <div class="cal-cell"><span class="cal-date">10</span></div>
+    <div class="cal-cell"><span class="cal-date">11</span></div>
+    <div class="cal-cell"><span class="cal-date">12</span></div>
+    <div class="cal-cell"><span class="cal-date">13</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">14</span><span class="cal-gig-band">Sound Machine</span></div>
+    <div class="cal-cell"><span class="cal-date">15</span></div>
+    <div class="cal-cell"><span class="cal-date">16</span></div>
+    <div class="cal-cell"><span class="cal-date">17</span></div>
+    <div class="cal-cell"><span class="cal-date">18</span></div>
+    <div class="cal-cell"><span class="cal-date">19</span></div>
+    <div class="cal-cell"><span class="cal-date">20</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">21</span><span class="cal-gig-band">Coyote Creek</span></div>
+    <div class="cal-cell"><span class="cal-date">22</span></div>
+    <div class="cal-cell"><span class="cal-date">23</span></div>
+    <div class="cal-cell"><span class="cal-date">24</span></div>
+    <div class="cal-cell"><span class="cal-date">25</span></div>
+    <div class="cal-cell"><span class="cal-date">26</span></div>
+    <div class="cal-cell"><span class="cal-date">27</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">28</span><span class="cal-gig-band">Hit n Miss</span></div>
+    <div class="cal-cell"><span class="cal-date">29</span></div>
+    <div class="cal-cell"><span class="cal-date">30</span></div>
+    <div class="cal-cell"><span class="cal-date">31</span></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-sep" role="tabpanel" aria-labelledby="tab-month-sep"><div class="gig-grid">
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Pop Junkies</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Sons of Stanley</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">25</span></div><div class="gig-band">The Guilty Party</div></div>
+  <div class="gig-panel" id="gigs-sep" role="tabpanel" aria-labelledby="tab-month-sep"><div class="cal-grid">
+    <div class="cal-dow">Su</div>
+    <div class="cal-dow">Mo</div>
+    <div class="cal-dow">Tu</div>
+    <div class="cal-dow">We</div>
+    <div class="cal-dow">Th</div>
+    <div class="cal-dow">Fr</div>
+    <div class="cal-dow">Sa</div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell"><span class="cal-date">1</span></div>
+    <div class="cal-cell"><span class="cal-date">2</span></div>
+    <div class="cal-cell"><span class="cal-date">3</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">4</span><span class="cal-gig-band">Pop Junkies</span></div>
+    <div class="cal-cell"><span class="cal-date">5</span></div>
+    <div class="cal-cell"><span class="cal-date">6</span></div>
+    <div class="cal-cell"><span class="cal-date">7</span></div>
+    <div class="cal-cell"><span class="cal-date">8</span></div>
+    <div class="cal-cell"><span class="cal-date">9</span></div>
+    <div class="cal-cell"><span class="cal-date">10</span></div>
+    <div class="cal-cell"><span class="cal-date">11</span></div>
+    <div class="cal-cell"><span class="cal-date">12</span></div>
+    <div class="cal-cell"><span class="cal-date">13</span></div>
+    <div class="cal-cell"><span class="cal-date">14</span></div>
+    <div class="cal-cell"><span class="cal-date">15</span></div>
+    <div class="cal-cell"><span class="cal-date">16</span></div>
+    <div class="cal-cell"><span class="cal-date">17</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">18</span><span class="cal-gig-band">Sons of Stanley</span></div>
+    <div class="cal-cell"><span class="cal-date">19</span></div>
+    <div class="cal-cell"><span class="cal-date">20</span></div>
+    <div class="cal-cell"><span class="cal-date">21</span></div>
+    <div class="cal-cell"><span class="cal-date">22</span></div>
+    <div class="cal-cell"><span class="cal-date">23</span></div>
+    <div class="cal-cell"><span class="cal-date">24</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">25</span><span class="cal-gig-band">The Guilty Party</span></div>
+    <div class="cal-cell"><span class="cal-date">26</span></div>
+    <div class="cal-cell"><span class="cal-date">27</span></div>
+    <div class="cal-cell"><span class="cal-date">28</span></div>
+    <div class="cal-cell"><span class="cal-date">29</span></div>
+    <div class="cal-cell"><span class="cal-date">30</span></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-oct" role="tabpanel" aria-labelledby="tab-month-oct"><div class="gig-grid">
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">2</span></div><div class="gig-band">Mickey Magennis</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">9</span></div><div class="gig-band">Steve Sainas Trio</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">16</span></div><div class="gig-band">Vibrant Shades</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">23</span></div><div class="gig-band">Neil Harnett Trio</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">30</span></div><div class="gig-band">Hit n Miss</div></div>
+  <div class="gig-panel" id="gigs-oct" role="tabpanel" aria-labelledby="tab-month-oct"><div class="cal-grid">
+    <div class="cal-dow">Su</div>
+    <div class="cal-dow">Mo</div>
+    <div class="cal-dow">Tu</div>
+    <div class="cal-dow">We</div>
+    <div class="cal-dow">Th</div>
+    <div class="cal-dow">Fr</div>
+    <div class="cal-dow">Sa</div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell"><span class="cal-date">1</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">2</span><span class="cal-gig-band">Mickey Magennis</span></div>
+    <div class="cal-cell"><span class="cal-date">3</span></div>
+    <div class="cal-cell"><span class="cal-date">4</span></div>
+    <div class="cal-cell"><span class="cal-date">5</span></div>
+    <div class="cal-cell"><span class="cal-date">6</span></div>
+    <div class="cal-cell"><span class="cal-date">7</span></div>
+    <div class="cal-cell"><span class="cal-date">8</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">9</span><span class="cal-gig-band">Steve Sainas Trio</span></div>
+    <div class="cal-cell"><span class="cal-date">10</span></div>
+    <div class="cal-cell"><span class="cal-date">11</span></div>
+    <div class="cal-cell"><span class="cal-date">12</span></div>
+    <div class="cal-cell"><span class="cal-date">13</span></div>
+    <div class="cal-cell"><span class="cal-date">14</span></div>
+    <div class="cal-cell"><span class="cal-date">15</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">16</span><span class="cal-gig-band">Vibrant Shades</span></div>
+    <div class="cal-cell"><span class="cal-date">17</span></div>
+    <div class="cal-cell"><span class="cal-date">18</span></div>
+    <div class="cal-cell"><span class="cal-date">19</span></div>
+    <div class="cal-cell"><span class="cal-date">20</span></div>
+    <div class="cal-cell"><span class="cal-date">21</span></div>
+    <div class="cal-cell"><span class="cal-date">22</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">23</span><span class="cal-gig-band">Neil Harnett Trio</span></div>
+    <div class="cal-cell"><span class="cal-date">24</span></div>
+    <div class="cal-cell"><span class="cal-date">25</span></div>
+    <div class="cal-cell"><span class="cal-date">26</span></div>
+    <div class="cal-cell"><span class="cal-date">27</span></div>
+    <div class="cal-cell"><span class="cal-date">28</span></div>
+    <div class="cal-cell"><span class="cal-date">29</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">30</span><span class="cal-gig-band">Hit n Miss</span></div>
+    <div class="cal-cell"><span class="cal-date">31</span></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-nov" role="tabpanel" aria-labelledby="tab-month-nov"><div class="gig-grid">
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">6</span></div><div class="gig-band">Replay</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">THU</span><span class="gig-num">12</span></div><div class="gig-band">Brian Zalo</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">20</span></div><div class="gig-band">Coyote Creek</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">27</span></div><div class="gig-band">Steve Sainas Trio</div></div>
+  <div class="gig-panel" id="gigs-nov" role="tabpanel" aria-labelledby="tab-month-nov"><div class="cal-grid">
+    <div class="cal-dow">Su</div>
+    <div class="cal-dow">Mo</div>
+    <div class="cal-dow">Tu</div>
+    <div class="cal-dow">We</div>
+    <div class="cal-dow">Th</div>
+    <div class="cal-dow">Fr</div>
+    <div class="cal-dow">Sa</div>
+    <div class="cal-cell"><span class="cal-date">1</span></div>
+    <div class="cal-cell"><span class="cal-date">2</span></div>
+    <div class="cal-cell"><span class="cal-date">3</span></div>
+    <div class="cal-cell"><span class="cal-date">4</span></div>
+    <div class="cal-cell"><span class="cal-date">5</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">6</span><span class="cal-gig-band">Replay</span></div>
+    <div class="cal-cell"><span class="cal-date">7</span></div>
+    <div class="cal-cell"><span class="cal-date">8</span></div>
+    <div class="cal-cell"><span class="cal-date">9</span></div>
+    <div class="cal-cell"><span class="cal-date">10</span></div>
+    <div class="cal-cell"><span class="cal-date">11</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">12</span><span class="cal-gig-band">Brian Zalo</span></div>
+    <div class="cal-cell"><span class="cal-date">13</span></div>
+    <div class="cal-cell"><span class="cal-date">14</span></div>
+    <div class="cal-cell"><span class="cal-date">15</span></div>
+    <div class="cal-cell"><span class="cal-date">16</span></div>
+    <div class="cal-cell"><span class="cal-date">17</span></div>
+    <div class="cal-cell"><span class="cal-date">18</span></div>
+    <div class="cal-cell"><span class="cal-date">19</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">20</span><span class="cal-gig-band">Coyote Creek</span></div>
+    <div class="cal-cell"><span class="cal-date">21</span></div>
+    <div class="cal-cell"><span class="cal-date">22</span></div>
+    <div class="cal-cell"><span class="cal-date">23</span></div>
+    <div class="cal-cell"><span class="cal-date">24</span></div>
+    <div class="cal-cell"><span class="cal-date">25</span></div>
+    <div class="cal-cell"><span class="cal-date">26</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">27</span><span class="cal-gig-band">Steve Sainas Trio</span></div>
+    <div class="cal-cell"><span class="cal-date">28</span></div>
+    <div class="cal-cell"><span class="cal-date">29</span></div>
+    <div class="cal-cell"><span class="cal-date">30</span></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
   </div></div>
 
-  <div class="gig-panel" id="gigs-dec" role="tabpanel" aria-labelledby="tab-month-dec"><div class="gig-grid">
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">4</span></div><div class="gig-band">Sons of Stanley</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">11</span></div><div class="gig-band">The Guilty Party</div></div>
-    <div class="gig-card"><div class="gig-date-block"><span class="gig-dow">FRI</span><span class="gig-num">18</span></div><div class="gig-band">Iconix</div></div>
+  <div class="gig-panel" id="gigs-dec" role="tabpanel" aria-labelledby="tab-month-dec"><div class="cal-grid">
+    <div class="cal-dow">Su</div>
+    <div class="cal-dow">Mo</div>
+    <div class="cal-dow">Tu</div>
+    <div class="cal-dow">We</div>
+    <div class="cal-dow">Th</div>
+    <div class="cal-dow">Fr</div>
+    <div class="cal-dow">Sa</div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell"><span class="cal-date">1</span></div>
+    <div class="cal-cell"><span class="cal-date">2</span></div>
+    <div class="cal-cell"><span class="cal-date">3</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">4</span><span class="cal-gig-band">Sons of Stanley</span></div>
+    <div class="cal-cell"><span class="cal-date">5</span></div>
+    <div class="cal-cell"><span class="cal-date">6</span></div>
+    <div class="cal-cell"><span class="cal-date">7</span></div>
+    <div class="cal-cell"><span class="cal-date">8</span></div>
+    <div class="cal-cell"><span class="cal-date">9</span></div>
+    <div class="cal-cell"><span class="cal-date">10</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">11</span><span class="cal-gig-band">The Guilty Party</span></div>
+    <div class="cal-cell"><span class="cal-date">12</span></div>
+    <div class="cal-cell"><span class="cal-date">13</span></div>
+    <div class="cal-cell"><span class="cal-date">14</span></div>
+    <div class="cal-cell"><span class="cal-date">15</span></div>
+    <div class="cal-cell"><span class="cal-date">16</span></div>
+    <div class="cal-cell"><span class="cal-date">17</span></div>
+    <div class="cal-cell cal-gig"><span class="cal-date">18</span><span class="cal-gig-band">Iconix</span></div>
+    <div class="cal-cell"><span class="cal-date">19</span></div>
+    <div class="cal-cell"><span class="cal-date">20</span></div>
+    <div class="cal-cell"><span class="cal-date">21</span></div>
+    <div class="cal-cell"><span class="cal-date">22</span></div>
+    <div class="cal-cell"><span class="cal-date">23</span></div>
+    <div class="cal-cell"><span class="cal-date">24</span></div>
+    <div class="cal-cell"><span class="cal-date">25</span></div>
+    <div class="cal-cell"><span class="cal-date">26</span></div>
+    <div class="cal-cell"><span class="cal-date">27</span></div>
+    <div class="cal-cell"><span class="cal-date">28</span></div>
+    <div class="cal-cell"><span class="cal-date">29</span></div>
+    <div class="cal-cell"><span class="cal-date">30</span></div>
+    <div class="cal-cell"><span class="cal-date">31</span></div>
+    <div class="cal-cell cal-empty"></div>
+    <div class="cal-cell cal-empty"></div>
   </div></div>
 
   <div class="gig-note">Lineup pulled from the booking calendar — live music is Friday nights (plus occasional one-off dates). Band names/dates are confirmed as of print, but always subject to change. Call ahead to confirm a specific show.</div>
@@ -515,286 +695,6 @@ footer img{height:72px;width:auto;opacity:0.5;}
 
 <div class="divider"></div>
 
-<!-- DRINK MENU -->
-<section id="drink-specials">
-  <div class="sec-head">
-    <div class="section-kicker">Behind The Bar</div>
-    <h2>Drink Menu</h2>
-  </div>
-  <div class="drink-tabs" role="tablist" aria-label="Drink category">
-    <button class="drink-tab active" id="tab-drink-spirits" role="tab" aria-selected="true" aria-controls="drink-spirits" data-drink="spirits">Spirits</button>
-    <button class="drink-tab" id="tab-drink-beer" role="tab" aria-selected="false" aria-controls="drink-beer" data-drink="beer">Beer &amp; Coolers</button>
-    <button class="drink-tab" id="tab-drink-wine" role="tab" aria-selected="false" aria-controls="drink-wine" data-drink="wine">Wine</button>
-    <button class="drink-tab" id="tab-drink-nonalc" role="tab" aria-selected="false" aria-controls="drink-nonalc" data-drink="nonalc">Non-Alcoholic</button>
-  </div>
-
-  <div class="drink-section active" id="drink-spirits" role="tabpanel" aria-labelledby="tab-drink-spirits">
-    <div class="menu-cat"><h3 class="menu-cat-title">Vodka <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Smirnoff</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Stoli</div></div><div class="mi-price">$7.50 / $11.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Ketel One</div></div><div class="mi-price">$8.25 / $12.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Grey Goose</div></div><div class="mi-price">$10.50 / $15.75</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Rum <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Captain Morgan White</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Captain Morgan Dark</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Captain Morgan Spiced</div></div><div class="mi-price">$7.50 / $11.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Appleton Estate</div></div><div class="mi-price">$8.00 / $12.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Kraken Black Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Sailor Jerry Spiced</div></div><div class="mi-price">$8.25 / $12.50</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Whiskey <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Seagram's VO</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Fireball</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Crown Royal</div></div><div class="mi-price">$7.75 / $11.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Crown Royal Apple</div></div><div class="mi-price">$7.75 / $11.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Jameson</div></div><div class="mi-price">$8.25 / $12.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Bearface Bourbon</div></div><div class="mi-price">$8.75 / $13.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Monkey Shoulder</div></div><div class="mi-price">$11.00 / $16.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Redbreast</div></div><div class="mi-price">$11.50 / $17.25</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Gin <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Gordon's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Tanqueray</div></div><div class="mi-price">$7.75 / $11.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Empress 1908 Indigo</div></div><div class="mi-price">$10.75 / $16.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Empress 1908 Cucumber Lemon</div></div><div class="mi-price">$10.75 / $16.25</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Scotch <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Bell's</div></div><div class="mi-price">$7.25 / $10.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Bushmills Black</div></div><div class="mi-price">$8.25 / $12.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Johnnie Walker Black</div></div><div class="mi-price">$10.75 / $16.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Glenlivet Founders Reserve</div></div><div class="mi-price">$11.25 / $17.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Glenlivet 12yr</div></div><div class="mi-price">$12.25 / $18.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Talisker</div></div><div class="mi-price">$15.75 / $23.75</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Tequila <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">1oz / 2oz</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">El Tequileno</div></div><div class="mi-price">$7.75 / $11.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Espolon Blanco</div></div><div class="mi-price">$8.75 / $13.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Casamigos Blanco</div></div><div class="mi-price">$11.50 / $17.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Casamigos Reposado</div></div><div class="mi-price">$12.00 / $18.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Don Julio Blanco</div></div><div class="mi-price">$12.25 / $18.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Don Julio Reposado</div></div><div class="mi-price">$13.50 / $20.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Clase Azul Reposado</div></div><div class="mi-price">$34.00 / $60.00</div></div>
-    </div></div>
-  </div>
-
-  <div class="drink-section" id="drink-beer" role="tabpanel" aria-labelledby="tab-drink-beer">
-    <div class="menu-cat"><h3 class="menu-cat-title">Bottled Beer <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">341mL</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Kokanee</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Budweiser</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Bud Light</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Miller Lite</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Corona</div></div><div class="mi-price">$7.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">MGD</div></div><div class="mi-price">$7.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Sleeman's Honey Brown</div></div><div class="mi-price">$7.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Heineken</div><div class="mi-desc">330mL</div></div><div class="mi-price">$7.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Stella Artois</div></div><div class="mi-price">$7.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Michelob Ultra</div></div><div class="mi-price">$7.50</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Tall Cans <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">473mL</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Coors Original</div></div><div class="mi-price">$7.50</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">On Tap <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">20oz Pint / 60oz Jug</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Pilsner</div></div><div class="mi-price">$7.25 / $21.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Canadian</div></div><div class="mi-price">$7.50 / $21.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Coors Light</div></div><div class="mi-price">$7.50 / $21.75</div></div>
-      <div class="menu-item"><div><div class="mi-name">Granville Island Cypress Honey Lager</div></div><div class="mi-price">$7.75 / $22.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Rickard's Red</div></div><div class="mi-price">$7.75 / $22.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Blue Moon</div></div><div class="mi-price">$8.00 / $23.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Heineken</div></div><div class="mi-price">$8.75 / $25.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Howe Sound Hazy Daze IPA</div></div><div class="mi-price">$8.75 / $25.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Fat Tug IPA</div></div><div class="mi-price">$8.75 / $25.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Phillips Blue Buck</div></div><div class="mi-price">$8.75 / $25.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Strongbow</div><div class="mi-desc">Pint only</div></div><div class="mi-price">$8.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Guinness</div><div class="mi-desc">Pint only</div></div><div class="mi-price">$9.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Rotating Taps</div><div class="mi-desc">Ask your server what's pouring today</div></div><div class="mi-price">—</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Ciders &amp; Coolers <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">355mL</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Growers</div><div class="mi-desc">Peach or Pear</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hey Y'all</div></div><div class="mi-price">$7.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Nutrl</div><div class="mi-desc">Grape or Grapefruit</div></div><div class="mi-price">$7.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Happy Dad</div><div class="mi-desc">Grape, Fruit Punch, or Raspberry</div></div><div class="mi-price">$7.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">White Claw</div><div class="mi-desc">Lime, Mango, or Black Cherry</div></div><div class="mi-price">$7.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Smirnoff Ice</div><div class="mi-desc">330mL</div></div><div class="mi-price">$7.50</div></div>
-    </div></div>
-  </div>
-
-  <div class="drink-section" id="drink-wine" role="tabpanel" aria-labelledby="tab-drink-wine">
-    <div class="menu-cat"><h3 class="menu-cat-title">Reds <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Jackson Triggs Merlot</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Murray Banks Cab Sauv</div></div><div class="mi-price">$7.00 / $10.00 / $17.50 / $26.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Bin 555 Shiraz</div></div><div class="mi-price">$8.00 / $11.00 / $19.50 / $29.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Woodwork Cab Sauv</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$32.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">1884 Malbec</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Whites <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">6oz / 9oz / ½L / Btl</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Jackson Triggs Sauv Blanc</div></div><div class="mi-price">$6.25 / $9.25 / $16.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hardys Riesling Gewürztraminer</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Yellowtail Chardonnay</div></div><div class="mi-price">$7.25 / $10.25 / $18.00 / $27.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Tempus Two Pinot Grigio</div></div><div class="mi-price">$7.75 / $10.75 / $19.00 / $28.50</div></div>
-      <div class="menu-item"><div><div class="mi-name">Kim Crawford Sauv Blanc</div><div class="mi-desc">Bottle only</div></div><div class="mi-price">$38.00</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Sparkling <span style="color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:none;">200mL</span></h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Henkell</div></div><div class="mi-price">$10.00</div></div>
-    </div></div>
-    <div class="menu-note">Wine Wednesday: $5.50 house wine (6oz) &middot; $5 off any 750mL bottle.</div>
-  </div>
-
-  <div class="drink-section" id="drink-nonalc" role="tabpanel" aria-labelledby="tab-drink-nonalc">
-    <div class="menu-cat"><h3 class="menu-cat-title">Non-Alcoholic</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Budweiser Zero</div></div><div class="mi-price">$5.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Heineken 0.0</div></div><div class="mi-price">$5.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Corona 0.0</div></div><div class="mi-price">$5.25</div></div>
-      <div class="menu-item"><div><div class="mi-name">Guinness 0</div></div><div class="mi-price">$7.00</div></div>
-      <div class="menu-item"><div><div class="mi-name">Ole</div><div class="mi-desc">Assorted flavours</div></div><div class="mi-price">$5.25</div></div>
-    </div></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- MENU -->
-<section id="menu">
-  <div class="sec-head">
-    <div class="section-kicker">Food &amp; Drink</div>
-    <h2>Full Menu</h2>
-  </div>
-  <div class="menu-tabs" role="tablist" aria-label="Menu category">
-    <button class="menu-tab active" id="tab-menu-apps" role="tab" aria-selected="true" aria-controls="menu-apps" data-menu="apps">Starters</button>
-    <button class="menu-tab" id="tab-menu-burgers" role="tab" aria-selected="false" aria-controls="menu-burgers" data-menu="burgers">Burgers & Dogs</button>
-    <button class="menu-tab" id="tab-menu-mains" role="tab" aria-selected="false" aria-controls="menu-mains" data-menu="mains">Handhelds</button>
-    <button class="menu-tab" id="tab-menu-poutine" role="tab" aria-selected="false" aria-controls="menu-poutine" data-menu="poutine">Poutine</button>
-    <button class="menu-tab" id="tab-menu-pizza" role="tab" aria-selected="false" aria-controls="menu-pizza" data-menu="pizza">Pizza</button>
-    <button class="menu-tab" id="tab-menu-sides" role="tab" aria-selected="false" aria-controls="menu-sides" data-menu="sides">Sides</button>
-    <button class="menu-tab" id="tab-menu-greens" role="tab" aria-selected="false" aria-controls="menu-greens" data-menu="greens">Greens & Bowls</button>
-    <button class="menu-tab" id="tab-menu-kids" role="tab" aria-selected="false" aria-controls="menu-kids" data-menu="kids">Kids</button>
-  </div>
-
-  <div class="menu-section active" id="menu-apps" role="tabpanel" aria-labelledby="tab-menu-apps">
-    <div class="menu-note">All menu items are prepared in the Sandcastle Grill kitchen and served to your table by our attentive pub staff.</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Shareables & Starters</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Chicken Wings</div><div class="mi-desc">10 pieces lightly breaded and fried to perfection! Choose your sauce: Franks Red Hot, Honey Garlic, Barbeque, Sweet Thai Chili, Salt & Pepper, Teriyaki, Sriracha, or Dry Cajun</div></div><div class="mi-price">$18</div></div>
-      <div class="menu-item"><div><div class="mi-name">Nachos</div><div class="mi-desc">Served with our sour cream and salsa. Add guacamole $4 · Add chicken $7 · Add beef/pulled pork $6 · Double cheese $6</div></div><div class="mi-price">$24</div></div>
-      <div class="menu-item"><div><div class="mi-name">Half Order Nachos</div></div><div class="mi-price">$15</div></div>
-      <div class="menu-item"><div><div class="mi-name">Basket of Fries</div><div class="mi-desc">Basket of golden french fries</div></div><div class="mi-price">$8</div></div>
-      <div class="menu-item"><div><div class="mi-name">Tater Tots</div><div class="mi-desc">Basket of tater tots served with chipotle mayo</div></div><div class="mi-price">$11</div></div>
-      <div class="menu-item"><div><div class="mi-name">Yam Fries</div><div class="mi-desc">Basket of yam fries served with in-house made chipotle mayo</div></div><div class="mi-price">$11</div></div>
-      <div class="menu-item"><div><div class="mi-name">Truffle Parmesan Fries</div><div class="mi-desc">Crispy golden fries tossed with rich truffle oil, grated Parmesan and garlic</div></div><div class="mi-price">$11</div></div>
-      <div class="menu-item"><div><div class="mi-name">Onion Rings</div><div class="mi-desc">Basket of onion rings served with a side of ranch</div></div><div class="mi-price">$12</div></div>
-      <div class="menu-item"><div><div class="mi-name">Deep Fried Pickles</div><div class="mi-desc">Six lightly breaded dill pickle spears, fried to golden perfection! Served with ranch dip</div></div><div class="mi-price">$10</div></div>
-      <div class="menu-item"><div><div class="mi-name">Chips & Salsa</div><div class="mi-desc">Warm corn tortilla chips with a side of salsa</div></div><div class="mi-price">$7</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hummus & Pita</div><div class="mi-desc">Creamy, savoury hummus served with warm, soft pita bread</div></div><div class="mi-price">$15</div></div>
-      <div class="menu-item"><div><div class="mi-name">Veggies & Dip</div><div class="mi-desc">Seasonal vegetables served with a side of ranch dip</div></div><div class="mi-price">$13</div></div>
-      <div class="menu-item"><div><div class="mi-name">BC Sliders</div><div class="mi-desc">3 homemade mini burgers topped with cheese & bacon</div></div><div class="mi-price">$18</div></div>
-      <div class="menu-item"><div><div class="mi-name">Pulled Pork Sliders</div><div class="mi-desc">Tender pulled pork tossed in our smoky BBQ sauce, on 3 mini toasted brioche buns and topped with pickles and coleslaw</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">Perogies</div><div class="mi-desc">8 potato & cheese perogies topped with sautéed onions and bacon, served with a side of sour cream</div></div><div class="mi-price">$13</div></div>
-      <div class="menu-item"><div><div class="mi-name">Mini Donuts</div><div class="mi-desc">1 Dozen Donuts — $8 · Party Bucket (bucket is yours to keep!) — $25</div></div><div class="mi-price">$8–$25</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-burgers" role="tabpanel" aria-labelledby="tab-menu-burgers">
-    <div class="menu-note">All burgers and hot dogs come with your choice of side! Smash patties are made with 3oz fresh ground beef smashed flat into burger shape — simple, like it should be.</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Burgers & Dogs</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Canadian Hot Dog</div><div class="mi-desc">Bacon, sautéed onions, cheese</div></div><div class="mi-price">$12</div></div>
-      <div class="menu-item"><div><div class="mi-name">Ballpark Hot Dog</div><div class="mi-desc">Ketchup, mustard, relish, raw onions</div></div><div class="mi-price">$12</div></div>
-      <div class="menu-item"><div><div class="mi-name">The O.G. SMASHBurger</div><div class="mi-desc">The original prototype — 2 smash patties with cheese, mustard, onion, pickle & mayo</div></div><div class="mi-price">$18</div></div>
-      <div class="menu-item"><div><div class="mi-name">Oink & Moo SMASHBurger</div><div class="mi-desc">As the name implies — 2 smash patties with cheese, bacon, lettuce, tomato, pickle, onion, mayo & 1000 Island dressing</div></div><div class="mi-price">$19</div></div>
-      <div class="menu-item"><div><div class="mi-name">The Backyard BBQ SMASHburger</div><div class="mi-desc">2 smash patties with mozzarella, bacon, mushrooms, jalapeños, BBQ sauce and mayo</div></div><div class="mi-price">$19</div></div>
-      <div class="menu-item"><div><div class="mi-name">The CASTLE SMASHBurger</div><div class="mi-desc">Our signature burger — 2 smash patties with mozza and cheddar cheese, sautéed mushrooms and onions, bacon, mayo & mustard</div></div><div class="mi-price">$20</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-mains" role="tabpanel" aria-labelledby="tab-menu-mains">
-    <div class="menu-note">Most handhelds come with your choice of a side!</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Handhelds</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Chicken Tenders</div><div class="mi-desc">Served with your choice of side and dipping sauce</div></div><div class="mi-price">$17</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hummus Garden Wrap</div><div class="mi-desc">A soft tortilla filled with creamy hummus, crisp lettuce, fresh cucumbers, carrots and tomatoes. Add crispy chicken $5</div></div><div class="mi-price">$13</div></div>
-      <div class="menu-item"><div><div class="mi-name">Buffalo Chicken Wrap</div><div class="mi-desc">Chicken tenders tossed in hot sauce with lettuce, tomato, green onion, cheese & ranch</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">Chicken Caesar Wrap</div><div class="mi-desc">Shredded chicken with romaine lettuce, parmesan cheese & Caesar dressing</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">Breakfast Wrap (Wrap Only)</div><div class="mi-desc">A fully loaded breakfast favourite! Two scrambled eggs, bacon, sausage, tater tots & Sriracha sauce. No side included.</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">Breakfast Sandwich</div><div class="mi-desc">Your choice of bacon or sausage with a fried egg, cheese & mayo. Served with tater tots and a side of chipotle mayo</div></div><div class="mi-price">$14</div></div>
-      <div class="menu-item"><div><div class="mi-name">Quesadilla</div><div class="mi-desc">Shredded chicken, pulled pork or beef, tomato, green onion, black olives & cheese served with sour cream and salsa</div></div><div class="mi-price">$17</div></div>
-      <div class="menu-item"><div><div class="mi-name">BLT</div><div class="mi-desc">A classic with bacon, lettuce & tomato on your choice of sourdough or multigrain</div></div><div class="mi-price">$15</div></div>
-      <div class="menu-item"><div><div class="mi-name">The Castle Reuben</div><div class="mi-desc">Pastrami layered with melted mozzarella, tangy mustard, pickle and sauerkraut on grilled marbled rye</div></div><div class="mi-price">$17</div></div>
-      <div class="menu-item"><div><div class="mi-name">Pulled Pork Sandwich</div><div class="mi-desc">Tender pulled pork tossed in our smoky BBQ sauce, and topped with crisp coleslaw on a brioche bun with mustard</div></div><div class="mi-price">$17</div></div>
-      <div class="menu-item"><div><div class="mi-name">Crispy Chicken Sandwich</div><div class="mi-desc">Choose Original (honey mustard) or Spicy (chipotle mayo) — both come with tomato, lettuce, pickles and cheese</div></div><div class="mi-price">$18</div></div>
-      <div class="menu-item"><div><div class="mi-name">French Dip</div><div class="mi-desc">Roast beef & mozzarella stacked on a panini bun with horseradish aioli & au jus</div></div><div class="mi-price">$19</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-poutine" role="tabpanel" aria-labelledby="tab-menu-poutine">
-    <div class="menu-note">All poutines can be made with your choice of tater tots or french fries!</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Poutine Project</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">The Routine Poutine</div><div class="mi-desc">Fries, gravy & cheese curds</div></div><div class="mi-price">$13</div></div>
-      <div class="menu-item"><div><div class="mi-name">The Hot Totty Poutine</div><div class="mi-desc">Tater tots, gravy & cheese curds</div></div><div class="mi-price">$13</div></div>
-      <div class="menu-item"><div><div class="mi-name">The Baked Potato Poutine</div><div class="mi-desc">Green onion, bacon bits & sour cream, gravy & cheese curds</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">The Eggs & Bakey Poutine</div><div class="mi-desc">Bacon bits, cheese curds, gravy and two sunny side up eggs</div></div><div class="mi-price">$16</div></div>
-      <div class="menu-item"><div><div class="mi-name">The 3 Little Pigs Poutine</div><div class="mi-desc">Pepperoni, bacon, & pork crumble, gravy & cheese curds</div></div><div class="mi-price">$18</div></div>
-      <div class="menu-item"><div><div class="mi-name">Pulled Pork Poutine</div><div class="mi-desc">Seasoned and sauced pulled pork, cheese curds and gravy</div></div><div class="mi-price">$18</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-pizza" role="tabpanel" aria-labelledby="tab-menu-pizza">
-    <div class="menu-note">Classic (C) Pizzas — Small 10" $20 · Large 14" $28. Signature (S) Pizzas — Small 10" $24 · Large 14" $32.</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Pizzas</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Pepperoni <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Pepperoni & mozzarella</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
-      <div class="menu-item"><div><div class="mi-name">Three Cheese <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Mozzarella, yellow & white cheddar</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hawaiian <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Black forest ham & pineapple</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
-      <div class="menu-item"><div><div class="mi-name">Veg'd Out <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(C)</span></div><div class="mi-desc">Pineapple, tomatoes, onion, red peppers & mushrooms</div></div><div class="mi-price">10" $20 / 14" $28</div></div>
-      <div class="menu-item"><div><div class="mi-name">Smoke & Spice (Deluxe) <span style="color:var(--gold-pale);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(S)</span></div><div class="mi-desc">Pepperoni, bacon, banana peppers & mushrooms</div></div><div class="mi-price">10" $24 / 14" $32</div></div>
-      <div class="menu-item"><div><div class="mi-name">Honey Buffalo Chicken <span style="color:var(--gold-pale);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(S)</span></div><div class="mi-desc">Chicken coated in buffalo sauce with banana peppers, red peppers, onion, bacon bits, green onion and a honey drizzle</div></div><div class="mi-price">10" $24 / 14" $32</div></div>
-      <div class="menu-item"><div><div class="mi-name">BBQ Chicken <span style="color:var(--gold-pale);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(S)</span></div><div class="mi-desc">Chicken, green onions, white onions, mushrooms, red peppers, bacon bits & tangy BBQ sauce</div></div><div class="mi-price">10" $24 / 14" $32</div></div>
-      <div class="menu-item"><div><div class="mi-name">Lotsa Meatsa <span style="color:var(--gold-pale);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;">(S)</span></div><div class="mi-desc">Pepperoni, pork crumble, taco beef & bacon bits</div></div><div class="mi-price">10" $24 / 14" $32</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-sides" role="tabpanel" aria-labelledby="tab-menu-sides">
-    <div class="menu-note">Handhelds and burgers come with your choice of an included side — swap up to a premium side for the price shown.</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Included Sides</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Fries</div></div><div class="mi-price">Included</div></div>
-      <div class="menu-item"><div><div class="mi-name">Garden Salad</div></div><div class="mi-price">Included</div></div>
-      <div class="menu-item"><div><div class="mi-name">Caesar Salad</div></div><div class="mi-price">Included</div></div>
-      <div class="menu-item"><div><div class="mi-name">Tater Tots</div></div><div class="mi-price">Included</div></div>
-    </div></div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Premium Side Upgrades</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Yam Fries</div></div><div class="mi-price">+$3</div></div>
-      <div class="menu-item"><div><div class="mi-name">Onion Rings</div></div><div class="mi-price">+$3</div></div>
-      <div class="menu-item"><div><div class="mi-name">Veggies & Dip</div></div><div class="mi-price">+$3</div></div>
-      <div class="menu-item"><div><div class="mi-name">Routine Poutine</div></div><div class="mi-price">+$4</div></div>
-      <div class="menu-item"><div><div class="mi-name">Side Gravy</div></div><div class="mi-price">+$2</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-greens" role="tabpanel" aria-labelledby="tab-menu-greens">
-    <div class="menu-cat"><h3 class="menu-cat-title">Greens & Bowls</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Loaded Salad</div><div class="mi-desc">Fully loaded salad with iceberg lettuce, cabbage, cheese, cucumbers, green onions & grape tomatoes. Served with your choice of salad dressing and a side of garlic bread.</div></div><div class="mi-price">$14</div></div>
-      <div class="menu-item"><div><div class="mi-name">Caesar Salad</div><div class="mi-desc">Romaine lettuce with Caesar dressing, parmesan cheese, croutons & a side of garlic bread. Add chicken $7</div></div><div class="mi-price">$15</div></div>
-      <div class="menu-item"><div><div class="mi-name">Half Size Loaded Salad</div><div class="mi-desc">No bread</div></div><div class="mi-price">$11</div></div>
-      <div class="menu-item"><div><div class="mi-name">Half Size Caesar Salad</div><div class="mi-desc">No bread</div></div><div class="mi-price">$11</div></div>
-      <div class="menu-item"><div><div class="mi-name">Daily Soup</div><div class="mi-desc">Ask about our daily soup options! Bowl $7 · Cup $6 (no bread)</div></div><div class="mi-price">$6–$8</div></div>
-    </div></div>
-  </div>
-
-  <div class="menu-section" id="menu-kids" role="tabpanel" aria-labelledby="tab-menu-kids">
-    <div class="menu-note">All kids meals come with a small fountain drink and a side of Oreo cookies.</div>
-    <div class="menu-cat"><h3 class="menu-cat-title">Kids Menu</h3><div class="menu-items">
-      <div class="menu-item"><div><div class="mi-name">Chicken Tenders & Fries</div><div class="mi-desc">Kids portion of chicken tenders served with fries and your choice of dipping sauce!</div></div><div class="mi-price">$8</div></div>
-      <div class="menu-item"><div><div class="mi-name">Mini Cheeseburgers & Fries</div><div class="mi-desc">2 miniature cheeseburgers with ketchup. Served with a side of fries!</div></div><div class="mi-price">$8</div></div>
-      <div class="menu-item"><div><div class="mi-name">Chicken Quesadilla & Fries</div><div class="mi-desc">Half sized quesadilla with chicken and cheese in a flour tortilla served with a side of fries!</div></div><div class="mi-price">$10</div></div>
-      <div class="menu-item"><div><div class="mi-name">Mini Corn Dogs & Fries</div><div class="mi-desc">2 mini classic corn dogs served with a side of fries!</div></div><div class="mi-price">$9</div></div>
-      <div class="menu-item"><div><div class="mi-name">Poutine</div><div class="mi-desc">A miniature version of the Routine Poutine with fries, gravy and cheese curds! No side included.</div></div><div class="mi-price">$9</div></div>
-      <div class="menu-item"><div><div class="mi-name">Hot Dog & Fries</div><div class="mi-desc">Kids sized hot dog served plain with a side of fries!</div></div><div class="mi-price">$6</div></div>
-      <div class="menu-item"><div><div class="mi-name">Grilled Cheese & Fries</div><div class="mi-desc">Kids sized grilled cheese on sourdough bread served with a side of fries!</div></div><div class="mi-price">$6</div></div>
-      <div class="menu-item"><div><div class="mi-name">Veggies & Dip</div><div class="mi-desc">Seasonal vegetables served with a side of ranch dip! No side included.</div></div><div class="mi-price">$8</div></div>
-    </div></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- LOCATION -->
 <section id="location">
   <div class="sec-head">
@@ -839,9 +739,9 @@ footer img{height:72px;width:auto;opacity:0.5;}
     <li><a href="#events">Events</a></li>
     <li><a href="#live-music">Live Music</a></li>
     <li><a href="#specials">Specials</a></li>
-    <li><a href="#drink-specials">Drinks</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#location">Location</a></li>
+    <li><a href="drinks.html">Drinks</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="index.html#location">Location</a></li>
   </ul>
   <div class="footer-copy">© <span id="copyYear">2026</span> Baselines Pub · South Surrey, BC</div>
 </footer>
@@ -884,17 +784,6 @@ function setDay(day) {
 dayTabs.forEach(tab => tab.addEventListener('click', () => setDay(tab.dataset.day)));
 setDay(todayKey);
 
-const menuTabs = document.querySelectorAll('.menu-tab');
-const menuSections = document.querySelectorAll('.menu-section');
-menuTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    menuTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-    menuSections.forEach(s => s.classList.remove('active'));
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected','true');
-    document.getElementById(`menu-${tab.dataset.menu}`).classList.add('active');
-  });
-});
 
 const monthTabs = document.querySelectorAll('.month-tab');
 const gigPanels = document.querySelectorAll('.gig-panel');
@@ -912,17 +801,6 @@ const jsMonthMap = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct',
 const curMonthKey = jsMonthMap[new Date().getMonth()];
 setMonth(monthOrder.includes(curMonthKey) ? curMonthKey : 'aug');
 
-const drinkTabs = document.querySelectorAll('.drink-tab');
-const drinkSections = document.querySelectorAll('.drink-section');
-drinkTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    drinkTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-    drinkSections.forEach(s => s.classList.remove('active'));
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected','true');
-    document.getElementById(`drink-${tab.dataset.drink}`).classList.add('active');
-  });
-});
 </script>
 </body>
 </html>
